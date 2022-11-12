@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.company.admin.mapper.AdminMapper">
+	
+	<insert id="adRegister" parameterType="com.company.admin.command.AdminVO" useGeneratedKeys="true" keyProperty="bno">
+		<selectKey keyProperty="nno" resultType="int" order="BEFORE">
+	    	SELECT seq_fa.NEXTVAL FROM DUAL
+	    </selectKey>
+		insert into fa (nno, name,addr,link, lnum, fanum, ilink)
+		values(#{nno},#{name},#{addr},#{link},#{lnum},#{fanum},#{ilink})
+	</insert>
+	
+	<select id="adGetList" resultType="com.company.admin.command.AdminVO">
+		select * from fa order by nno desc
+	</select>
+	
+</mapper>
