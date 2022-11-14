@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>차귀도 관광지</title>
+<title>차귀도 관광(4)</title>
 <meta charset="utf-8" />
 
 <link rel="stylesheet"
@@ -30,26 +30,40 @@
 		<div class="wrapper style1">
 			<div class="container">
 				<article id="main" class="special">
-					<div class="col-8 col-12-mobile" id = "content">
+					<div class="col-8 col-12-mobile" id="content">
 						<section>
 							<hr size="50" style="top: 30px; margin-bottom: 30px">
+							<c:choose>
+								<c:when test="${sessionScope.user_admin == 1}">
+									<button type="button"
+										style="margin-top: 30px; margin-left: 1200px"
+										class='btn btn-default'
+										onclick="location.href='/admin/adRegister'">게시물 등록</button>
+								</c:when>
+							</c:choose>
 							<div class="row gtr-50" style="align-items: center">
-
-								<div class="col-4">
-									<a  class="image fit"><img src="../images/attraction/차귀도.jpg"
-										alt="" /></a>
+								<c:forEach var="admin" items="${fa_list }">
+									<c:choose>
+										<c:when test="${admin.lnum == 4 && admin.fanum == 1}">
+											<div class="col-4">
+												<a class="image fit"><img src="${admin.ilink }" alt="" /></a>
+											</div>
+											<div class="col-8">
+												<h4>
+													<a href="${admin.link }"><strong>${admin.name }</strong></a>
+												</h4>
+												<p align="center">
+													<a href="${admin.link }">${admin.addr }</a>
+												</p>
+											</div>
+										</c:when>
+									</c:choose>
+								</c:forEach>
 								</div>
-								<div class="col-8">
-									<h4><a href="https://map.naver.com/v5/entry/place/13491454?c=14043229.6132693,3936835.7712188,13,0,0,0,dh"><strong>차귀도</strong></a></h4>
-									<p align="center"><a href="https://map.naver.com/v5/directions/-/14043229.613269616,3936835.7712189574,%EC%B0%A8%EA%B7%80%EB%8F%84,13491454,PLACE_POI/-/transit?c=14041366.4607048,3936835.7712190,13,0,0,0,dh">제주 제주시 한경면 고산리 차귀도</a></p>
-								</div>
-							</div>
-							<hr size="50" style="top: 10px; margin: 70px">
 						</section>
 					</div>
 				</article>
 			</div>
-
 		</div>
 	</div>
 
