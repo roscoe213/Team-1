@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>애월읍(1)</title>
+<title>애월읍(1) 맛집</title>
 <meta charset="utf-8" />
 
 <link rel="stylesheet"
