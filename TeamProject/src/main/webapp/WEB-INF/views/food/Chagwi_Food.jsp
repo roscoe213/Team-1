@@ -53,8 +53,7 @@
 								</c:when>
 								</c:choose>
 								</c:forEach>
-								
-							<hr size="50" style="top: 10px; margin: 70px">
+
 						</section>
 					</div>
 				</article>
