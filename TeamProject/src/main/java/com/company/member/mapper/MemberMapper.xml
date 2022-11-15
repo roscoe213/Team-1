@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace속성에는 사용할 매퍼의 인터페이스를 경로 지정 -->  
+<mapper namespace="com.company.member.mapper.MemberMapper">
+
+	<insert id="join" parameterType="com.company.member.command.MemberVO">
+		insert into members(email, pw, name, nickName) values (#{email }, #{pw }, #{name }, #{nickName})
+	</insert>
+
+	<select id="login" resultType="com.company.member.command.MemberVO">
+		select * from members where email = #{email} and pw = #{pw}
+	</select>
+    
+    <select id="emailCheck" resultType="int">
+ 		select count(*) as result from members where email = #{email}
+    </select>
+    
+    <select id="nickNameCheck" resultType="int">
+ 		select count(*) as result from members where nickName = #{nickName}
+    </select>
+    
+    <select id="confirm" resultType="int">
+ 		select count(*) as result from members where email = #{email} and pw = #{pw}
+    </select>
+    
+    <update id = "updateMembers" parameterType="com.company.member.command.MemberVO" >
+ 		update Members set nickName=#{nickName} where email=#{email} 
+    </update>
+    
+    <update id = "pwUpdate" parameterType="com.company.member.command.MemberVO" >
+ 		update Members set pw=#{pw} where email=#{email}
+    </update>
+	
+	<delete id="deleteMembers" parameterType="com.company.member.command.MemberVO" >
+   		delete from members where email = #{email} and pw = #{pw}
+    </delete>
+    
+     <select id="findPw" resultType="int">
+		select count(*) as result from members where email = #{email} and name = #{name}
+	</select>
+
+</mapper>

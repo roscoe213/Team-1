@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace속성에는 사용할 매퍼의 인터페이스를 경로 지정 -->  
+<mapper namespace="com.company.board.mapper.BoardMapper">
+
+	<!-- 게시물 목록 -->
+	<select id="getList" resultType="com.company.board.command.BoardVO">
+		select * from tbl_board order by bno desc
+	</select>
+	
+	<!-- top 조회수 목록 -->
+	<select id="topList" resultType="com.company.board.command.BoardVO">
+		select * from (select * from tbl_board order by hit desc) 
+		
+	<![CDATA[	where rownum <= 5 ]]>
+	</select>
+	
+	<!-- 게시물 등록 -->
+	<insert id="insertBoard" parameterType="com.company.board.command.BoardVO" useGeneratedKeys="true" keyProperty="bno">
+		<selectKey keyProperty="bno" resultType="int" order="BEFORE">
+	    	SELECT seq_board.NEXTVAL FROM DUAL
+	    </selectKey>
+		insert into tbl_board (bno, title,content,writer)
+		values(#{bno}, #{title},#{content},#{writer})
+	</insert>
+
+	<!-- 게시물 상세 보기 -->
+	<select id="getContent" parameterType="int" resultType="com.company.board.command.BoardVO">
+	    select * from tbl_board where bno = #{num}
+	</select>
+	
+	<!-- 게시물 수정하기(업데이트)  -->
+	<update id="updateBoard" parameterType="com.company.board.command.BoardVO">
+		update tbl_board set
+		content = #{content},
+		title = #{title},
+		writer = #{writer},
+		updatedate = sysdate
+		
+		where bno = #{bno}
+	</update>
+	
+	<!-- 게시물 삭제하기 -->
+	<delete id="deleteBoard" parameterType="int">
+		delete from tbl_board where bno = #{num}
+	</delete>
+		
+	<!-- 조회수 쿼리 -->
+	<update id="upHit" parameterType="com.company.board.command.BoardVO">
+		 update tbl_board set hit=hit+1 where bno = #{num}
+	</update>
+
+
+	<sql id="criteria">
+		<trim prefix="(" suffix=") AND " prefixOverrides= "OR">
+			<!--  <foreach item = 'type' collection="typeArr">-->
+			<!--	<trim prefix="OR">-->
+					<choose>
+						<when test="type == 'T'.toString()">
+							title like '%'||#{keyword}||'%'
+						</when>
+						<when test="type == 'C'.toString()">
+							content like '%'||#{keyword}||'%'
+						</when>
+						<when test="type == 'W'.toString()">
+							writer like '%'||#{keyword}||'%'
+						</when>
+					</choose>
+				</trim>
+			<!--</foreach>-->
+		<!--</trim>-->
+	</sql>
+	
+		<!-- 페이징 쿼리 -->
+	<select id="pagingList"
+	 resultType="com.company.board.command.BoardVO" 
+	>
+	<![CDATA[
+	 select * from 
+	 (select rownum as rnum, B.* from tbl_board B
+	  where 
+	 ]]>
+	 
+	  <include refid="criteria"></include>
+	  
+	 <![CDATA[
+	  rownum <= #{count_oracle} order by bno desc)
+	  where #{pageStart} <= rnum
+	  ]]>
+	 
+	</select>
+	
+	<select id="getTotal" resultType="int">
+		select count(*) from tbl_board
+		where
+		
+	 <include refid="criteria"></include>
+	 	
+	 	bno &gt; 0
+	 
+	</select>
+	
+	
+	<!-- 파일 업로드 -->
+	<insert id="insertFile" parameterType="hashMap">
+	
+		INSERT INTO MP_FILE(
+			FILE_NO,
+			BNO,
+			ORG_FILE_NAME,
+			STORED_FILE_NAME,
+			FILE_SIZE
+		)VALUES(
+			SEQ_MP_FILE_NO.NEXTVAL,
+			#{BNO},
+			#{ORG_FILE_NAME},
+			#{STORED_FILE_NAME},
+			#{FILE_SIZE}
+		)
+    </insert>
+    
+    <!-- 첨부파일 조회 -->
+	<select id="selectFileList" parameterType="int" resultType="hashMap">
+			SELECT FILE_NO,
+		   	ORG_FILE_NAME,
+		   	ROUND(FILE_SIZE/1024,1) AS FILE_SIZE
+	  		FROM MP_FILE
+	 		WHERE BNO = #{num}
+	   		AND DEL_GB = 'N'
+	</select>
+	
+	<!-- 첨부파일 다운 -->
+	<select id="selectFileInfo" parameterType="hashMap" resultType="hashMap">
+			SELECT 
+			STORED_FILE_NAME,
+			ORG_FILE_NAME
+			FROM MP_FILE
+			WHERE FILE_NO = #{FILE_NO}
+	</select>
+    
+    
+	
+	
+	
+
+</mapper>
