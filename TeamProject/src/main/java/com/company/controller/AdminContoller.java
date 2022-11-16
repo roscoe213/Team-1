@@ -51,20 +51,6 @@ public class AdminContoller {
 		return "redirect:"+referer;
 	}
 	
-	@RequestMapping("/adMap")
-	public String adMap(@RequestParam("num") int num,
-			Model model, @ModelAttribute("cri") Criteria cri){       //8.페이징에서 추가할 내용이 존재함."
-		System.out.println("===컨트롤러===");
-		System.out.println(num);
-		
-		
-		//num(bno)을 가지고 있는 데이터(row)를 불러오는 메서드
-		AdminVO vo = service.adContent(num);
-		model.addAttribute("link", vo);	
-		
-		
-		
-		return "admin/adMap";
-	}
+	
 	
 }
