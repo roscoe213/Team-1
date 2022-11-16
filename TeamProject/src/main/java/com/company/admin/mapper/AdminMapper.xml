@@ -17,4 +17,8 @@
 		select * from fa order by nno desc
 	</select>
 	
+	<select id="adContent" parameterType="int" resultType="com.company.admin.command.AdminVO">
+	    select * from tbl_board where nno = #{num}
+	</select>
+	
 </mapper>

@@ -30,10 +30,11 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public AdminVO adContent(int nno) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public AdminVO adContent(int num) {
+			AdminVO vo = mapper.adContent(num);
+			return vo;
+		}
+		
 
 	@Override
 	public void adUpdate(AdminVO vo) {
