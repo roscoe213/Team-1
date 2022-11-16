@@ -1,6 +1,5 @@
 package com.company.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -29,7 +28,7 @@ public class AdminContoller {
 	private AdminService service;
 	
 	@RequestMapping("/adRegister")
-	public String Food_list(HttpSession session) {
+	public String adRegist(HttpSession session) {
 		int result = (int)session.getAttribute("user_admin");
 		if(result == 1) {
 			return "/admin/adRegister";
