@@ -18,7 +18,7 @@
 	</select>
 	
 	<select id="adContent" parameterType="int" resultType="com.company.admin.command.AdminVO">
-	    select * from tbl_board where nno = #{num}
+	    select * from fa where nno = #{num}
 	</select>
 	
 </mapper>

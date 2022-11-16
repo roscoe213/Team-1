@@ -50,7 +50,7 @@
 											</div>
 											<div class="col-8">
 												<h4>
-													<a href="adMap?num=${admin.nno}"><strong>${admin.name }</strong></a>
+													<a href="adMapf?num=${admin.nno}"><strong>${admin.name }</strong></a>
 												</h4>
 												<p align="center">
 													<a href="${admin.link }">${admin.addr }</a>
