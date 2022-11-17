@@ -25,4 +25,14 @@
 		delete from fa where nno = #{num}
 	</delete>
 	
+	<update id="adUpdate" parameterType="com.company.admin.command.AdminVO">
+		update fa set 
+		name = #{name},
+		addr = #{addr},
+		link = #{link},
+		lnum = #{lnum},
+		fanum = #{fanum},
+		ilink = #{ilink}
+		where nno = #{nno}
+	</update>
 </mapper>
