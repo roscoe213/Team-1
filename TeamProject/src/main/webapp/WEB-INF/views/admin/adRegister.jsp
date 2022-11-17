@@ -105,7 +105,7 @@
 														<button type="button" class="btn btn-primary"
 															onclick="register()">등록</button>
 														<button type="button" class="btn btn-primary"
-															onclick="location.href='list?pageNum=${cri.pageNum}&count=${cri.count }'">취소</button>
+															onclick="location.href='javascript:history.back();'">취소</button>
 													</div>
 													
 												</form>
@@ -143,27 +143,6 @@
 		  return;
 	  }
   }
-	function readImage(input){
-		if(input.files && input.files[0]){
-			//FileReader 인스턴스 생성
-			const reader = new FileReader()	
-
-			//이미지파일만 넣을 수 있도록하기
-
-			//이미지가 로드 된 경우
-			reader.onload = e => {
-				const previewImage = document.getElementById("preview-image")
-				previewImage.src = e.target.result
-			}
-			// reader가 이미지 읽도록 하기
-			reader.readAsDataURL(input.files[0])
-		}
-	}
-    // input file에 change 이벤트 부여
-    const inputImage = document.getElementById("input-image")
-    inputImage.addEventListener("change", e => {
-    	readImage(e.target)
-    })
 </script>
 			<script src="../assets/js/jquery.min.js"></script>
 
