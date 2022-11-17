@@ -20,6 +20,11 @@
 	<select id="adContent" parameterType="int" resultType="com.company.admin.command.AdminVO">
 	    select * from fa where nno = #{num}
 	</select>
+	
+	<delete id="adDelete" parameterType="int">
+		delete from fa where nno = #{num}
+	</delete>
+	
 	<update id="adUpdate" parameterType="com.company.admin.command.AdminVO">
 		update fa set 
 		name = #{name},
