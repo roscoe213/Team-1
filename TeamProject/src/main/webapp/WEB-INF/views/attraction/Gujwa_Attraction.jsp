@@ -50,10 +50,10 @@
 											</div>
 											<div class="col-8">
 												<h4>
-													<a href="${admin.link }"><strong>${admin.name }</strong></a>
+													<a href="adMapa?num=${admin.nno}"><strong>${admin.name }</strong></a>
 												</h4>
 												<p align="center">
-													<a href="${admin.link }">${admin.addr }</a>
+													<a href="adMapa?num=${admin.nno}">${admin.addr }</a>
 												</p>
 											</div>
 										</c:when>
