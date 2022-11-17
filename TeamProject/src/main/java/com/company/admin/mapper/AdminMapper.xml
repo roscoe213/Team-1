@@ -20,5 +20,14 @@
 	<select id="adContent" parameterType="int" resultType="com.company.admin.command.AdminVO">
 	    select * from fa where nno = #{num}
 	</select>
-	
+	<update id="adUpdate" parameterType="com.company.admin.command.AdminVO">
+		update fa set 
+		name = #{name},
+		addr = #{addr},
+		link = #{link},
+		lnum = #{lnum},
+		fanum = #{fanum},
+		ilink = #{ilink}
+		where nno = #{nno}
+	</update>
 </mapper>

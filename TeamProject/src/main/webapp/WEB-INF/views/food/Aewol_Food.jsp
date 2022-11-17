@@ -48,18 +48,25 @@
 											<div class="col-4">
 												<a class="image fit"><img src="${admin.ilink }" alt="" /></a>
 											</div>
-											<div class="col-8">
+											<div class="col-8" style="">
 												<h4>
 													<a href="adMapf?num=${admin.nno}"><strong>${admin.name }</strong></a>
 												</h4>
 												<p align="center">
 													<a href="${admin.link }">${admin.addr }</a>
 												</p>
+
+												<c:choose>
+													<c:when test="${sessionScope.user_admin == 1}">
+														<button type="button" class='btn btn-default'
+															onclick="location.href='/admin/adModify?num=${admin.nno}'">수정</button>
+													</c:when>
+												</c:choose>
 											</div>
 										</c:when>
 									</c:choose>
 								</c:forEach>
-								</div>
+							</div>
 						</section>
 					</div>
 				</article>

@@ -22,6 +22,8 @@ import com.company.admin.service.AdminService;
 import com.company.board.command.BoardVO;
 import com.company.board.command.Criteria;
 
+import oracle.jdbc.proxy.annotation.Post;
+
 @Controller
 @RequestMapping("/admin/")
 public class AdminContoller {
@@ -50,5 +52,25 @@ public class AdminContoller {
 		
 		return "redirect:"+referer;
 	}
+	
+	@RequestMapping("/adModify")
+	public String adModify(@RequestParam("num") int num, Model model, @ModelAttribute("cri") Criteria cri) {
+		System.out.println("===컨트롤러===");
+		System.out.println(num);
+		
+		AdminVO vo = service.adContent(num);
+		model.addAttribute("adf", vo);
+		return "/admin/adModify";
+	}
+	
+	@PostMapping("/adUpdate")
+	public String adUpdate(AdminVO vo,HttpSession session, HttpServletRequest request) {
+		String referer = request.getHeader("Referer");
+		service.adUpdate(vo);
+		
+		
+		return "redirect:"+referer;
+	}
+	
 		
 }
