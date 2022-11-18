@@ -52,11 +52,12 @@
         <div class="group col-sm-4" >
         	<label for="user" class="label">　</label>
 			<div class="input-group-addon">
-	<button type="button" class="btn btn-primary" id="mail-Check-Btn">본인인증</button>
+	<button type="button" class="btn btn-primary" id="mail-Check-Btn" onclick="javascript:emailCheck()">본인인증</button>
 </div>
-	<div class="mail-check-box">
-<input class="form-control mail-check-input" placeholder="인증번호 6자리를 입력해주세요!" disabled="disabled" maxlength="6">
-</div>									
+		<button type="button" id="email_auth_btn" class="email_auth_btn" onclick="javascript:fnSearch()">인증번호 받기</button>
+					
+					<input type="text" placeholder="인증번호 입력" id="authNum" name = "authNum">
+									
 		</div>
 		</div>	
         <div class="group">
@@ -179,6 +180,12 @@
 		} else if($("#pw2").val()!=$("#pwcheck").val()) {
 			alert("비밀번호가 일치하지 않습니다.");
 			return; 
+		} else if($('#authNum').val()==""){
+			alert("인증번호를 입력해 주세요.");
+			return;
+		}else if($('#authNum').val()!=auth_code){
+			alert("인증번호를 제대로 입력해 주세요.");
+			return;
 		} else {			
 			alert("회원가입을 축하합니다");
 			$("#joinRegForm").submit();
@@ -222,6 +229,25 @@ function emailCheck() {
   		}	// else가 끝나는 부분
   			console.log(userEmail);
   	}
+  	var code = "";
+function fnSearch() {
+	var email = $("#email2").val();
+	if(email == ''){
+	 	alert("이메일을 입력해주세요.");
+	 	return false;
+	 }
+	alert(email+"이 맞습니까?");
+	$.ajax({
+			
+			type:"GET",
+			url:"mailCheck?email=" + email,
+			success:function(data){
+				alert("이메일을 확인해주세요")
+				auth_code = data;
+			}
+	});
+	
+}
   	
 function nickNameCheck() {
 		

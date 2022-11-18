@@ -1,8 +1,15 @@
 package com.company.controller;
 
+import java.lang.System.Logger;
+import java.util.Random;
+
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailSender;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -145,6 +152,41 @@ public class MemberController {
 			return result;
 		}
 		
+	//이메일 인증
+		@RequestMapping(value="/mailCheck",method=RequestMethod.GET)
+		@ResponseBody
+		public String mailCheckGET(String email) throws Exception{
+			System.out.println(email);
+			//인증번호 생성
+			Random random = new Random();
+			int checkNum = random.nextInt(888888) + 111111;
+			System.out.println("인증번호 : "+ checkNum);
+			System.out.println(checkNum);
+			/*이메일 보내기*/
+			String setFrom = "brandy1313@naver.com";
+			String toMail = email;
+			String title = "인증 번호를 받으세요";
+			String content = "제주사이트입니다."+"인증 번호는" + checkNum + "입니다";
+			
+			try {
+				MimeMessage message = mailSender.createMimeMessage();
+				MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
+				helper.setFrom(setFrom);
+				helper.setTo(toMail);
+				helper.setSubject(title);
+				helper.setText(content,true);
+				mailSender.send(message);
+			} catch (Exception e) {
+				 e.printStackTrace();
+			}
+			String data = Integer.toString(checkNum);
+			
+			return data;
+			
+			
+		}
+		@Autowired
+		private JavaMailSender mailSender;
 	//	닉네임 중복 체크
 		@RequestMapping(value = "/checkNickName", method = RequestMethod.POST)
 		@ResponseBody
