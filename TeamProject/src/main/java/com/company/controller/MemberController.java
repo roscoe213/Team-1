@@ -167,7 +167,7 @@ public class MemberController {
 			String toMail = email;
 			String title = "인증 번호를 받으세요";
 			String content = "제주사이트입니다."+"인증 번호는" + checkNum + "입니다";
-			
+			 
 			try {
 				MimeMessage message = mailSender.createMimeMessage();
 				MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");

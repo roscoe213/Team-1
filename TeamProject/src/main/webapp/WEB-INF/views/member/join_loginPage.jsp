@@ -56,7 +56,7 @@
 </div>
 		<button type="button" id="email_auth_btn" class="email_auth_btn" onclick="javascript:fnSearch()">인증번호 받기</button>
 					
-					<input type="text" placeholder="인증번호 입력" id="authNum" name = "authNum">
+				<input type="text" placeholder="인증번호 입력" id="authNum" name = "authNum">
 									
 		</div>
 		</div>	
