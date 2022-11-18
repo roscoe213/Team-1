@@ -11,9 +11,9 @@ public interface AdminMapper {
 	
 	public ArrayList<AdminVO> adGetList();
 	public void adRegister(AdminVO vo);
-	public AdminVO adContent(int nno);
+	public AdminVO adContent(int num);
 	public void adUpdate(AdminVO vo);
-	public void adDelete(int nno);
+	public void adDelete(int num);
 	public int adTotal();
 	
 }
