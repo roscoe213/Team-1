@@ -15,72 +15,64 @@ import com.company.admin.command.AdminCriteria;
 import com.company.admin.command.AdminVO;
 import com.company.admin.service.AdminService;
 
-import oracle.jdbc.proxy.annotation.Post;
-
 @Controller
 @RequestMapping("/admin/")
 public class AdminContoller {
-	
+
 	@Autowired
 	private AdminService service;
-	
+
 	@RequestMapping("/adRegister")
 	public String adRegist(HttpSession session) {
-		int result = (int)session.getAttribute("user_admin");
-		if(result == 1) {
+		int result = (int) session.getAttribute("user_admin");
+		if (result == 1) {
 			return "/admin/adRegister";
 		}
 		return "redirect:/";
-		
+
 	}
-	
-		
-	
+
 	@PostMapping("/adRegist")
-	public String adRegister(AdminVO vo,HttpServletRequest request) {
+	public String adRegister(AdminVO vo, HttpServletRequest request) {
 		String referer = request.getHeader("Referer");
-		
-		//서비스 처리 ... 
+
+		// 서비스 처리 ...
 		service.adRegister(vo);
-		
-		return "redirect:"+referer;
+
+		return "redirect:" + referer;
 	}
-	
+
 	@RequestMapping("/adModify")
-	public String adModify(@RequestParam("num") int num, HttpSession session, Model model, @ModelAttribute("cri") AdminCriteria cri ) {
-		int result = (int)session.getAttribute("user_admin");
-		if(result == 1) {
+	public String adModify(@RequestParam("num") int num, HttpSession session, Model model,
+			@ModelAttribute("cri") AdminCriteria cri) {
+		int result = (int) session.getAttribute("user_admin");
+		if (result == 1) {
 			AdminVO vo = service.adContent(num);
 			model.addAttribute("adf", vo);
 			return "/admin/adModify";
 		}
 		return "redirect:/";
-		
+
 	}
-	
-	
+
 	@RequestMapping("/delete")
 	public String delete(@RequestParam("nno") int num, HttpServletRequest request) {
 		System.out.println("---컨트롤러 계층---");
 		System.out.println(num);
 		String referer = request.getHeader("Referer");
+		service.adDelete(num);
 
-  @RequestMapping("/adModify")
-	public String adModify(@RequestParam("num") int num, Model model, @ModelAttribute("cri") Criteria cri) {
-		System.out.println("===컨트롤러===");
-		System.out.println(num);
-		
-		AdminVO vo = service.adContent(num);
-		model.addAttribute("adf", vo);
-		return "/admin/adModify";
+		return "redirect:" + referer;
 	}
+
 	
+	
+
 	@PostMapping("/adUpdate")
-	public String adUpdate(AdminVO vo,HttpSession session, HttpServletRequest request) {
+	public String adUpdate(AdminVO vo, HttpSession session, HttpServletRequest request) {
 		String referer = request.getHeader("Referer");
 		service.adUpdate(vo);
-		service.adDelete(num);
-		
-		return "redirect:"+referer;
+
+		return "redirect:" + referer;
 	}
 }
