@@ -1,19 +1,26 @@
 package com.company.controller;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.company.admin.command.AdminCriteria;
+import com.company.admin.command.AdminPageVO;
 import com.company.admin.command.AdminVO;
 import com.company.admin.service.AdminService;
+import com.company.board.command.BoardVO;
+import com.company.board.command.Criteria;
 
 @Controller
 @RequestMapping("/admin/")
@@ -63,16 +70,13 @@ public class AdminContoller {
 		service.adDelete(num);
 
 		return "redirect:" + referer;
-	}
-
-	
-	
-
+}
 	@PostMapping("/adUpdate")
 	public String adUpdate(AdminVO vo, HttpSession session, HttpServletRequest request) {
 		String referer = request.getHeader("Referer");
 		service.adUpdate(vo);
 
 		return "redirect:" + referer;
-	}
+}
+		
 }
