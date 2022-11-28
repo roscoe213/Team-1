@@ -38,23 +38,23 @@
  <div class="p-5">
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-2">비밀번호 찾기</h1>
-                                        <p class="mb-4">아이디와 이메일을 입력해주세요!</p>
+                                        <p class="mb-4">임시비밀번호를 받으실 이메일을 입력해주세요!</p>
                                     </div>
-                                    <form class="user" action="findPwForm" method="post">
+                                    <form class="user" action="gofindPwForm" method="post" id = "gofindPwForm">
                                        <div class="form-group">
                                             <input type="email" class="form-control form-control-user"
                                                 id="email" name="email"
                                                 placeholder="이메일을 입력하세요....">
                                         </div>
-                                        <div class="form-group">
-                                            <input type="text class="form-control form-control-user"
-                                                id="name" name="name"
-                                                placeholder="이름을 입력하세요...">
-                                        </div>
+
                                          
-                                        <button type="submit" class="btn btn-primary btn-user btn-block">
-                                            Find PW
+                                        <button type="button" class="btn btn-primary btn-user btn-block" onclick="searchCheck()">
+                                            이메일로 인증코드 전송
                                         </button>
+                                        
+                                        <input type="text" placeholder="인증번호 입력" id="authNum" name = "authNum">
+                                        
+                                        <input type="button" class="button" value="비밀번호 변경" onclick="passwordCheck()">
                                     </form>
                                     <hr>
                                      
@@ -63,6 +63,42 @@
                                         <a class="small" href="/">메인페이지</a>
                                     </div>
                                     </div>
-                                    
+           <script src="../assets/js/jquery.min.js"></script>
+           <script>
+           	function searchCheck(){
+           		var email = $("#email").val();
+           		
+           		if(email == ""){
+           			alert("이메일을 입력하세요.");
+           			$("#email").focus();
+           			return false;
+           		}else
+           			alert(email+"이 맞습니까?");
+           		$.ajax({
+        			
+        			type:"GET",
+        			url:"mailCheck?email=" + email,
+        			success:function(data){
+        				alert("이메일을 확인해주세요")
+        				auth_code = data;
+        			}
+        	});
+           			
+           	}
+           	
+           	function passwordCheck(){
+           		if($('#authNum').val()==""){
+        			alert("인증번호를 입력해 주세요.");
+        			return;
+        		}else if($('#authNum').val()!=auth_code){
+        			alert("인증번호를 제대로 입력해 주세요.");
+        			return;
+        		} else {			
+        			alert("인증번호 입력 완료");
+        			$("#gofindPwForm").submit();
+        			return;
+        		}
+           	}
+           </script>                         
 </body>
 <%@include file="../include/footer.jsp"%>

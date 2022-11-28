@@ -239,6 +239,11 @@ public class MemberController {
 			return "member/newPassword";
 		}
 		
+		@RequestMapping("/gofindPwForm")
+		public String gofindPwForm(MemberVO vo) {
+			return "member/newPassword";
+		}
+		
 		@RequestMapping("/newpwUpdateForm")
 		public String newpwUpdateForm(MemberVO vo) {
 			
