@@ -34,6 +34,7 @@
 	 <mybatis-spring:scan base-package="com.company.member.mapper"/>
 	 <mybatis-spring:scan base-package="com.company.board.mapper"/>
 	 <mybatis-spring:scan base-package="com.company.admin.mapper"/>
+	  <mybatis-spring:scan base-package="com.company.reply.mapper"/>
 	 
 	 
 	 <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"> 
