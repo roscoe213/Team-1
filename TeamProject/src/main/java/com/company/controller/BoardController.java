@@ -216,7 +216,7 @@ public class BoardController {
 	
 	//게시판 삭제
 	@RequestMapping("/delete")
-	public String delete(@RequestParam("bno") int num) {
+	public String delete(@RequestParam("num") int num) {
 		System.out.println("---컨트롤러 계층---");
 		System.out.println(num);
 		//delete구현

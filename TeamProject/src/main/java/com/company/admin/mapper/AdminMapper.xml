@@ -25,4 +25,27 @@
 		delete from fa where nno = #{num}
 	</delete>
 	
+		<!-- 페이징 쿼리 -->
+	<select id="pagingList"
+	 resultType="com.company.board.command.BoardVO" 
+	>
+	<![CDATA[
+	 select * from 
+	 (select rownum as rnum, B.* from fa B
+	  where rownum <= #{count_oracle} order by nno desc)
+	  where #{pageStart} <= rnum
+	  ]]>
+	 
+	</select>
+	
+	<select id="adTotala" resultType="int">
+		select count(*) from fa
+		where lnum =#{num1} and fanum=1
+	</select>
+	
+	<select id="adTotalf" resultType="int">
+		select count(*) from fa
+		where lnum =#{num1} and fanum=2
+	</select>
+	
 </mapper>

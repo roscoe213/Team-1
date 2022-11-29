@@ -8,6 +8,7 @@
 
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/assets/css/main.css" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 </head>
 <body class="no-sidebar is-preload">
 
@@ -53,6 +54,33 @@
 								</c:when>
 								</c:choose>
 								</c:forEach>
+								</div>
+								<div class="container">
+								<div class="row">
+									<div class="col">
+										<ul class="pagination justify-content-center"
+											style="margin-top: 30px;">
+											<!-- 1. 이전 페이지 활성화 여부  -->
+											<c:if test="${adpageMaker.prev }">
+												<li class="page-item"><a class="page-link"
+													href="Jochen_Food?pageNum=${adpageMaker.adStartPage -1 }">Previous</a></li>
+											</c:if>
+											<!-- 2. 페이지번호 활성화 여부 -->
+											<c:forEach var="num" begin="${adpageMaker.adStartPage }"
+												end="${adpageMaker.adEndPage}">
+												<li
+													class="page-item ${adpageMaker.adcri.pageNum == num ? 'active':'' }"><a
+													class="page-link" href="Jocheon_Food?num1=11&pageNum=${num }">${num }</a></li>
+											</c:forEach>
+											<!-- 3. 다음 버튼 활성화 여부 -->
+											<c:if test="${adpageMaker.next }">
+												<li class="page-item"><a class="page-link"
+													href="Jocheon_Food?pageNum=${adpageMaker.adEndPage +1 }">Next</a></li>
+											</c:if>
+										</ul>
+									</div>
+								</div>
+							</div>
 						</section>
 					</div>
 				</article>
