@@ -39,8 +39,12 @@
 
 		</div>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
+		
+<div style="position: fixed; bottom: 5px; right: 5px;">			
+<a href="#"><img style="text-decoration:none; border-radius: 70%;" src="../images/top.png" title="맨 위로"></a>
+</div>
+<!-- Scripts -->
+			<!-- <script src="assets/js/jquery.min.js"></script>  -->
 			<script src="assets/js/jquery.dropotron.min.js"></script>
 			<script src="assets/js/jquery.scrolly.min.js"></script>
 			<script src="assets/js/jquery.scrollex.min.js"></script>
@@ -48,8 +52,5 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-<div style="position: fixed; bottom: 5px; right: 5px;">			
-<a href="#"><img style="text-decoration:none; border-radius: 70%;" src="../images/top.png" title="맨 위로"></a>
-</div>
 	</body>
 </html>
