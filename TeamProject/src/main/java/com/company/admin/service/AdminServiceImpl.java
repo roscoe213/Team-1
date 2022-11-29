@@ -44,15 +44,15 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public void adDelete(int num) {
-		mapper.adDelete(num);
+	public void adDelete(int nno) {
+		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public int adTotal() {
-		// TODO Auto-generated method stub
-		return 0;
+		int total = mapper.adTotal();
+		return total;
 	}
 
 }

@@ -1,6 +1,5 @@
 package com.company.admin.command;
 
-import com.company.board.command.Criteria;
 
 public class AdminPageVO {
 	// 1. total : 게시판 글 전체 개수. 
@@ -87,10 +86,13 @@ public class AdminPageVO {
 		public void setTotal(int total) {
 			this.total = total;
 		}
-		public AdminCriteria getCri() {
+
+		public AdminCriteria getAdcri() {
 			return adcri;
 		}
-		public void setCri(AdminCriteria adcri) {
+
+		public void setAdcri(AdminCriteria adcri) {
 			this.adcri = adcri;
 		}
+
 }
