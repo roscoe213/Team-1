@@ -12,7 +12,8 @@ public interface AdminService {
 	public AdminVO adContent(int num);
 	public void adUpdate(AdminVO vo);
 	public void adDelete(int num);
-	public int adTotal();
+	public int adTotala(int num1);
+	public int adTotalf(int num1);
 	
 	
 

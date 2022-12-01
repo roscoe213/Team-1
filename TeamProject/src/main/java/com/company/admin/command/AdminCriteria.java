@@ -8,10 +8,10 @@ import lombok.ToString;
 @Getter
 @Setter
 public class AdminCriteria {
-	// mysql, mariadb : select * from tbl_board by num desc limit ?, ?;
+	// mysql, mariadb : select * from fa by num desc limit ?, ?;
 
-	// oracle : select * from (select rownum as rnum,bno,writer
-	// from tbl_board where ? >= rownum order by bno desc)
+	// oracle : select * from (select rownum as rnum,nno,writer
+	// from tbl_board where ? >= rownum order by nno desc)
 	// where rnum >= ?;
 
 	private int pageNum; // 페이지 번호
@@ -33,7 +33,7 @@ public class AdminCriteria {
 			this.count = count;
 		}
 
-	public int getPageStart() {
+	public int getadpageStart() {
 //			return ((pageNum - 1) * count);  //mysql, mariadb인경우
 		return ((pageNum - 1) * count) + 1; // 오라클
 	}
