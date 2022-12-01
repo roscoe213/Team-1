@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.company.admin.command.AdminCriteria;
 import com.company.admin.command.AdminPageVO;
@@ -229,9 +228,7 @@ public class Site_AttractionController {
 
 	@RequestMapping("/adMapa")
 	public String adMap(@RequestParam("num") int num, Model model, @ModelAttribute("adcri") AdminCriteria adcri) { // 8.페이징에서
-																													// 추가할
-																													// 내용이
-																													// 존재함."
+																											
 		System.out.println("===컨트롤러===");
 		System.out.println(num);
 
@@ -241,5 +238,4 @@ public class Site_AttractionController {
 
 		return "attraction/adMapa";
 	}
-
 }

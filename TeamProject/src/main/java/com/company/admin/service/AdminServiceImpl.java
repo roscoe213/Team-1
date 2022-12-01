@@ -38,13 +38,14 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public void adUpdate(AdminVO vo) {
-		// TODO Auto-generated method stub
+		mapper.adUpdate(vo);
+		System.out.println(vo.getNno());
 
 	}
 
 	@Override
-	public void adDelete(int num) {
-		mapper.adDelete(num);
+	public void adDelete(int nno) {
+		// TODO Auto-generated method stub
 
 	}
 

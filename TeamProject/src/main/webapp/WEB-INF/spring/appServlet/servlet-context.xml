@@ -25,6 +25,7 @@
 	<context:component-scan base-package="com.company.member.*" />
 	<context:component-scan base-package="com.company.board.service" /> 
 	<context:component-scan base-package="com.company.admin.service" />		
+	<context:component-scan base-package="com.company.reply.*" />	
 	 <context:component-scan base-package="com.company.util" />
 	
 	<beans:bean id="multipartResolver" 

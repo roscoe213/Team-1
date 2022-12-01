@@ -99,14 +99,13 @@ public class AdminPageVO {
 
 		public void setNext(boolean next) {
 			this.next = next;
+    }
+    
+		public AdminCriteria getAdcri() {
+			return adcri;
 		}
 
 		public void setAdcri(AdminCriteria adcri) {
 			this.adcri = adcri;
 		}
-		
-		
-
-		
-		
 }
