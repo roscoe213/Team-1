@@ -304,7 +304,7 @@
 	            modalInputReplyDate.val(replyService.displayTime(reply.replyDate)).attr("readonly","readonly");
 	
 	            modal.data("rno",reply.rno);
-	            if(nick != null){
+	            if(nick!=null){
 	            	if(${sessionScope.user_admin==1} || nick == reply.replyer){
 	            modal.find("button[id != 'modalCloseBtn']").hide();
 	            	
