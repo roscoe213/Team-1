@@ -56,6 +56,32 @@
 													<a href="${admin.link }">${admin.addr }</a>
 												</p>
 											</div>
+											<div class="container">
+								<div class="row">
+									<div class="col">
+										<ul class="pagination justify-content-center"
+											style="margin-top: 30px;">
+											<!-- 1. 이전 페이지 활성화 여부  -->
+											<c:if test="${adpageMaker.prev }">
+												<li class="page-item"><a class="page-link"
+													href="Mara_Attraction?pageNum=${adpageMaker.adStartPage -1 }">Previous</a></li>
+											</c:if>
+											<!-- 2. 페이지번호 활성화 여부 -->
+											<c:forEach var="num" begin="${adpageMaker.adStartPage }"
+												end="${adpageMaker.adEndPage}">
+												<li
+													class="page-item ${adpageMaker.adcri.pageNum == num ? 'active':'' }"><a
+													class="page-link" href="Aewol_Attraction?num1=1&pageNum=${num }">${num }</a></li>
+											</c:forEach>
+											<!-- 3. 다음 버튼 활성화 여부 -->
+											<c:if test="${adpageMaker.next }">
+												<li class="page-item"><a class="page-link"
+													href="Aewol_Attraction?pageNum=${adpageMaker.adEndPage +1 }">Next</a></li>
+											</c:if>
+										</ul>
+									</div>
+								</div>
+							</div>
 										</c:when>
 									</c:choose>
 								</c:forEach>

@@ -50,9 +50,14 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public int adTotal() {
-		int total = mapper.adTotal();
+	public int adTotala(int num1) {
+		int total = mapper.adTotala(num1);
 		return total;
 	}
-
+	
+	@Override
+	public int adTotalf(int num1) {
+		int total = mapper.adTotalf(num1);
+		return total;
+	}
 }

@@ -30,7 +30,7 @@
 		#{num}
 	</delete>
   
-	<update id="adUpdate" parameterType="com.company.admin.command.AdminVO">
+  <update id="adUpdate" parameterType="com.company.admin.command.AdminVO">
 		update fa set 
 		name = #{name},
 		addr = #{addr},
@@ -42,29 +42,26 @@
 		where nno = #{nno}
 	</update>
 
-	<!-- 페이징 쿼리 -->
-	<select id="adPageList"
-		resultType="com.company.admin.command.AdminVO">
+		<!-- 페이징 쿼리 -->
+	<select id="pagingList"
+	 resultType="com.company.board.command.BoardVO" 
+	>
 	<![CDATA[
 	 select * from 
 	 (select rownum as rnum, B.* from fa B
-	  where 
-	 ]]>
-
-	  
-	 <![CDATA[
-	  rownum <= #{count_oracle} order by nno desc)
+	  where rownum <= #{count_oracle} order by nno desc)
 	  where #{pageStart} <= rnum
 	  ]]>
-
+	 
 	</select>
-
-	<select id="adTotal" resultType="int">
+	
+	<select id="adTotala" resultType="int">
 		select count(*) from fa
-		where
-
-
-		nno &gt; 0
-
+		where lnum =#{num1} and fanum=1
+	</select>
+	
+	<select id="adTotalf" resultType="int">
+		select count(*) from fa
+		where lnum =#{num1} and fanum=2
 	</select>
 </mapper>

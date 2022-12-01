@@ -1,17 +1,24 @@
 package com.company.controller;
 
+import java.io.File;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.company.member.command.MemberVO;
 import com.company.member.service.MemberService;
+
+import lombok.extern.log4j.Log4j;
 
 @Controller
 @RequestMapping("/member/*")
@@ -211,4 +218,32 @@ public class MemberController {
 				}
 			return "redirect:/";
 		}
+		
+		@GetMapping("/uploadAjax")
+		public String uploadAjax() {
+			System.out.println("upload ajax");
+			return "member/uploadAjax";
+		}
+		
+		@PostMapping("/uploadAjaxAction")
+		public void uploadAjaxAction(MultipartFile[] uploadFile) {
+			
+			String uploadFolder = "C:\\upload";
+			
+			for (MultipartFile multipartFile: uploadFile) {
+				String uploadFileName = multipartFile.getOriginalFilename();
+				
+				uploadFileName = uploadFileName.substring(uploadFileName.lastIndexOf("\\")+1);
+				File saveFile = new File(uploadFolder, uploadFileName);
+				try {
+					multipartFile.transferTo(saveFile);
+				} catch (Exception e) {
+					e.getStackTrace();
+				}
+			}
+			
+		}
 }
+
+
+
