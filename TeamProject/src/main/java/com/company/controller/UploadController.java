@@ -35,7 +35,6 @@ import lombok.extern.log4j.Log4j;
 import net.coobird.thumbnailator.Thumbnailator;
 
 @Controller
-@Log4j
 public class UploadController {
 
 	private String getFolder() {

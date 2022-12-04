@@ -3,7 +3,6 @@ package com.company.controller;
 import java.io.File;
 import java.util.Random;
 
-import javax.annotation.Resource;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpSession;
 

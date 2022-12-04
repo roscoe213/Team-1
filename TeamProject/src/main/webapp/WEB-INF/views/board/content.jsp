@@ -201,6 +201,7 @@
 						</div>
 					</div>
 				</div>
+				</div>
         
 				<form id="infoForm" action="modify" method="get">
 					<input type="hidden" id="bno" name="num" value='<c:out value="${board.bno}"/>'>
