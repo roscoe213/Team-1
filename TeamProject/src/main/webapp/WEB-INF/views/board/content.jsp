@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -80,11 +81,11 @@
           <!-- 10. 변경을 클릭시 pageNum과 count값을 넘김 -->
         <c:choose>
 				<c:when test="${sessionScope.user_email == null || board.writer != sessionScope.user_nick }">
-         	 			<button type="button" class="btn btn-dark" style="float: right;" onclick="location.href='list?pageNum=${cri.pageNum}&count=${cri.count }'">목록</button>
+         	 			<button type="button" id="list_btn" class="btn btn-dark" style="float: right;">목록</button>
          		 </c:when>
           <c:otherwise>
-        	  <button type="button" class="btn btn-primary" style="float: right; margin-left: 20px;" onclick="location.href='modify?num=${board.bno}&pageNum=${cri.pageNum}&count=${cri.count }'">수정</button>
-          	<button type="button" class="btn btn-dark" style="float: right;" onclick="location.href='list?pageNum=${cri.pageNum}&count=${cri.count }'">목록</button>
+        	  <button type="button" id="modify_btn" class="btn btn-primary" style="float: right; margin-left: 20px;" >수정</button>
+          	<button type="button" id="list_btn" class="btn btn-dark" style="float: right;" >목록</button>
         	  
           </c:otherwise>
           
@@ -136,11 +137,35 @@
 					</div>
 
 				</div>
-<script src="../assets/js/jquery.min.js"></script>	
+				<form id="infoForm" action="modify" method="get">
+					<input type="hidden" id="bno" name="num" value='<c:out value="${board.bno}"/>'>
+					<input type="hidden" name="pageNum" value='<c:out value="${cri.pageNum}"/>'>
+					<input type="hidden" name="count" value='<c:out value="${cri.count}"/>'>	
+					<input type="hidden" name="type" value="${cri.type }">
+					<input type="hidden" name="keyword" value="${cri.keyword }">	
+				</form>
+			
+			
+<script src="../assets/js/jquery.min.js"></script>			
+	
 <script>
-	function modiCheck(){	
-				alert("로그인이 필요합니다.");
-				location.href='/member/join_loginPage';
-	}
-</script>
+	var form = $("#infoForm");
+	
+	$("#list_btn").on("click", function(e){
+		form.find("#bno").remove();
+		form.attr("action", "/board/list");
+		form.submit();
+	});
+	
+	$("#modify_btn").on("click", function(e){
+		form.attr("action", "/board/modify");
+		form.submit();
+	});	
+</script>		
+				
+
+
+
+
+
 <%@include file="../include/footer.jsp"%>

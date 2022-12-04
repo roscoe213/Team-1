@@ -51,7 +51,7 @@
 
 
 
-        <form role="form" action="update?pageNum=${cri.pageNum}&count=${cri.count }" method="post" id="regForm">
+        <form role="form" action="update" method="post" id="modifyForm">
           
           <div class="form-group">
             <label style="margin-bottom: 1px;">번호</label>
@@ -71,9 +71,9 @@
           <div class="form-group" style="margin-top: 30px;">
             <label style="display: inline;">작성자</label>
             <input class="form-control" style="margin-right: 230px;" name='writer' value="${board.writer }" id="writer">
-            <button type="button" class="btn btn-primary" onclick="buttonCheck('modify')">수정</button>
-            <button type="button" class="btn btn-secondary" onclick="buttonCheck('delete')">삭제</button>
-            <button type="button" class="btn btn-dark" onclick="buttonCheck('list')">목록</button>
+            <button type="button" id="modify_btn" class="btn btn-primary" >수정</button>
+            <button type="button" id="delete_btn" class="btn btn-secondary" >삭제</button>
+            <button type="button" id="list_btn" class="btn btn-dark" >목록</button>
           </div>
           
           
@@ -85,13 +85,17 @@
            --%>
           <!-- 자바스크립트 페이징 처리 -->
           
-          
-          
-          <input type="hidden" name="pageNum" value="${cri.pageNum }">
-          <input type="hidden" name="count" value="${cri.count }">
+                  
+  
         </form>
-
-		  
+		<form id="infoForm" action="modify" method="get">
+			<input type="hidden" id="bno" name="num" value='<c:out value="${board.bno}"/>'>
+			<input type="hidden" name="pageNum" value='<c:out value="${cri.pageNum}"/>'>
+			<input type="hidden" name="count" value='<c:out value="${cri.count}"/>'>	
+			<input type="hidden" name="type" value="${cri.type }">
+			<input type="hidden" name="keyword" value="${cri.keyword }">	
+		</form>
+			  
 
 
       </div>
@@ -103,34 +107,41 @@
 </div>
 <!-- /.row -->
 
-<script type="text/javascript">
-	function buttonCheck(e){
-		if(e=='delete'){
-			if(confirm("삭제하겠습니까?")){
-				//$("#아이디") or $(아이디)는 HTML 아이디 속성에 바로 접근
-				//attr(속성, 변경할 값) 함수는 태그의 내부 속성을 변경하는 함수
-				$("#regForm").attr("action","delete");
-				$("#regForm").submit();
-				return;
-			}else{
-				return;
-			}
-		}else if(e=='modify'){
-			if($("#title").val()==""){
-				alert("제목과 내용은 필수입니다.");
-			}else if($("#writer").val()==""){
-				alert("작성자는 필수입니다.");
-			}else if(confirm("수정하겠습니까?")){
-				$("#regForm").submit();
-				
-			}
-		}else{
-			$("#regForm").attr("action","list");
-			$("#regForm").submit();
+<script src="../assets/js/jquery.min.js"></script>
+<script>
+	var form = $("#infoForm");		// 페이지 이동 form(리스트 페이지 이동, 조회 페이지 이동)
+	var mForm = $("#modifyForm");	// 페이지 데이터 수정 from
+	
+	/* 목록 페이지 이동 버튼 */
+	$("#list_btn").on("click", function(e){
+		form.find("#bno").remove();
+		form.attr("action", "/board/list");
+		form.submit();
+	});
+	
+	/* 수정 하기 버튼 */
+	$("#modify_btn").on("click", function(e){
+		if($("#title").val()==""){
+			alert("제목과 내용은 필수입니다.");
+		}else if($("#writer").val()==""){
+			alert("작성자는 필수입니다.");
+		}else if(confirm("수정하겠습니까?")){
+			mForm.submit();
 		}
-	}
-</script>
-										
+	});
+	
+		/* 삭제 버튼 */
+	$("#delete_btn").on("click", function(e){
+		if(confirm("삭제하겠습니까?")){
+			form.attr("action", "/board/delete");
+			form.attr("method", "post");
+			form.submit();
+		}else{
+			return;
+		}
+	});	
+	
+</script>										
 									
 							</div>
 						</div>
@@ -139,5 +150,5 @@
 					</div>
 
 				</div>
-<script src="../assets/js/jquery.min.js"></script>
+
 <%@include file="../include/footer.jsp"%>

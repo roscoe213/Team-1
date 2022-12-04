@@ -25,7 +25,6 @@
 	<context:component-scan base-package="com.company.member.*" />
 	<context:component-scan base-package="com.company.board.service" /> 
 	<context:component-scan base-package="com.company.admin.service" />		
-	 <context:component-scan base-package="com.company.util" />
 	
 	
 	
