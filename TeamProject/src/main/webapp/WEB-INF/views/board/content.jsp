@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html>
@@ -88,11 +87,12 @@
 											<!-- 9. 목록으로 이동시 pageNum과 count값을 넘김 -->
 											<!-- 10. 변경을 클릭시 pageNum과 count값을 넘김 -->
 											<c:choose>
-												<c:when test="${sessionScope.user_email == null || board.writer != sessionScope.user_nick }">
+												<c:when test="${sessionScope.user_email != null || board.writer == sessionScope.user_nick || sessionScope.user_admin==1}">
+													<button type="button" class="btn btn-primary" style="float: right; margin-left: 20px;" onclick="location.href='modify?num=${board.bno}&pageNum=${cri.pageNum}&count=${cri.count }'">수정</button>
 													<button type="button" class="btn btn-dark" style="float: right;" onclick="location.href='list?pageNum=${cri.pageNum}&count=${cri.count }'">목록</button>
+
 												</c:when>
 												<c:otherwise>
-													<button type="button" class="btn btn-primary" style="float: right; margin-left: 20px;" onclick="location.href='modify?num=${board.bno}&pageNum=${cri.pageNum}&count=${cri.count }'">수정</button>
 													<button type="button" class="btn btn-dark" style="float: right;" onclick="location.href='list?pageNum=${cri.pageNum}&count=${cri.count }'">목록</button>
 
 												</c:otherwise>
@@ -196,10 +196,10 @@
 							</div>
 						</div>
 						<div class="modal-footer">
-								<button id="modalModifyBtn" type="button" class="btn btn-warning">Modify</button>
-								<button id="modalRemoveBtn" type="button" class="btn btn-danger">Remove</button>
-								<button id="modalRegisterBtn" type="button" class="btn btn-primary">Register</button>
-								<button id="modalCloseBtn" type="button" class="btn btn-default">Close</button>
+							<button id="modalModifyBtn" type="button" class="btn btn-warning">Modify</button>
+							<button id="modalRemoveBtn" type="button" class="btn btn-danger">Remove</button>
+							<button id="modalRegisterBtn" type="button" class="btn btn-primary">Register</button>
+							<button id="modalCloseBtn" type="button" class="btn btn-default">Close</button>
 						</div>
 					</div>
 				</div>
@@ -295,7 +295,7 @@
 	        // 댓글 클릭 이벤트
 	        $(".chat").on("click","li",function(e) {
 	        	var rno = $(this).data("rno");
-	        	var nick = "<%=(String)session.getAttribute("user_nick")%>";
+	        	var nick = "<%=(String) session.getAttribute("user_nick")%>";
 	
 	            replyService.get(rno, function(reply) {
 	
@@ -347,6 +347,6 @@
 	        });
 	    }); 
 	</script>
-<%@include file="../include/footer.jsp" %>
+	<%@include file="../include/footer.jsp"%>
 </body>
 </html>
