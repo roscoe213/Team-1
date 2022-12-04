@@ -30,14 +30,16 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public AdminVO adContent(int nno) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public AdminVO adContent(int num) {
+			AdminVO vo = mapper.adContent(num);
+			return vo;
+		}
+		
 
 	@Override
 	public void adUpdate(AdminVO vo) {
-		// TODO Auto-generated method stub
+		mapper.adUpdate(vo);
+		System.out.println(vo.getNno());
 
 	}
 
@@ -48,9 +50,14 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public int adTotal() {
-		// TODO Auto-generated method stub
-		return 0;
+	public int adTotala(int num1) {
+		int total = mapper.adTotala(num1);
+		return total;
 	}
-
+	
+	@Override
+	public int adTotalf(int num1) {
+		int total = mapper.adTotalf(num1);
+		return total;
+	}
 }

@@ -2,19 +2,66 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
+
 <mapper namespace="com.company.admin.mapper.AdminMapper">
-	
-	<insert id="adRegister" parameterType="com.company.admin.command.AdminVO" useGeneratedKeys="true" keyProperty="bno">
+
+	<insert id="adRegister"
+		parameterType="com.company.admin.command.AdminVO" 
+		useGeneratedKeys="true" keyProperty="bno">
 		<selectKey keyProperty="nno" resultType="int" order="BEFORE">
-	    	SELECT seq_fa.NEXTVAL FROM DUAL
-	    </selectKey>
+			SELECT seq_fa.NEXTVAL FROM DUAL
+		</selectKey>
 		insert into fa (nno, name,addr,link, lnum, fanum, ilink)
 		values(#{nno},#{name},#{addr},#{link},#{lnum},#{fanum},#{ilink})
 	</insert>
-	
-	<select id="adGetList" resultType="com.company.admin.command.AdminVO">
+
+	<select id="adGetList"
+		resultType="com.company.admin.command.AdminVO">
 		select * from fa order by nno desc
 	</select>
+
+	<select id="adContent" parameterType="int"
+		resultType="com.company.admin.command.AdminVO">
+		select * from fa where nno = #{num}
+	</select>
+  
+	<delete id="adDelete" parameterType="int">
+		delete from fa where nno =
+		#{num}
+	</delete>
+  
+  <update id="adUpdate" parameterType="com.company.admin.command.AdminVO">
+		update fa set 
+		name = #{name},
+		addr = #{addr},
+		link = #{link},
+		lnum = #{lnum},
+		fanum =
+		#{fanum},
+		ilink = #{ilink}
+		where nno = #{nno}
+	</update>
+
+		<!-- 페이징 쿼리 -->
+	<select id="pagingList"
+	 resultType="com.company.board.command.BoardVO" 
+	>
+	<![CDATA[
+	 select * from 
+	 (select rownum as rnum, B.* from fa B
+	  where rownum <= #{count_oracle} order by nno desc)
+	  where #{pageStart} <= rnum
+	  ]]>
+	 
+	</select>
 	
+	<select id="adTotala" resultType="int">
+		select count(*) from fa
+		where lnum =#{num1} and fanum=1
+	</select>
+	
+	<select id="adTotalf" resultType="int">
+		select count(*) from fa
+		where lnum =#{num1} and fanum=2
+	</select>
 </mapper>

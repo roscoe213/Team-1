@@ -3,11 +3,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>표선면 관광지</title>
+<title>표선면 관광지(15)</title>
 <meta charset="utf-8" />
 
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/assets/css/main.css" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 </head>
 <body class="no-sidebar is-preload">
 
@@ -30,93 +31,71 @@
 		<div class="wrapper style1">
 			<div class="container">
 				<article id="main" class="special">
-					<div class="col-8 col-12-mobile" id = "content">
+					<div class="col-8 col-12-mobile" id="content">
 						<section>
 							<hr size="50" style="top: 30px; margin-bottom: 30px">
+							<c:choose>
+								<c:when test="${sessionScope.user_admin == 1}">
+									<button type="button"
+										style="margin-top: 30px; margin-left: 1200px"
+										class='btn btn-default'
+										onclick="location.href='/admin/adRegister'">게시물 등록</button>
+								</c:when>
+							</c:choose>
 							<div class="row gtr-50" style="align-items: center">
-
-								<div class="col-4">
-									<a class="image fit"><img src="../images/attraction/백약이오름.jpg"
-										alt="" /></a>
+								<c:forEach var="admin" items="${fa_list }">
+									<c:choose>
+										<c:when test="${admin.lnum == 15 && admin.fanum == 1}">
+											<div class="col-4">
+												<a class="image fit"><img src="${admin.ilink }" alt="" /></a>
+											</div>
+											<div class="col-8">
+												<h4>
+													<a href="${admin.link }"><strong>${admin.name }</strong></a>
+												</h4>
+												<p align="center">
+													<a href="${admin.link }">${admin.addr }</a>
+												</p>
+												<c:choose>
+											<c:when test="${sessionScope.user_admin == 1}">
+											<button type="button" class="btn btn-default" onclick="location.href='/admin/adModify?num=${admin.nno}'">수정</button>
+										    </c:when>
+										    </c:choose>
+											</div>
+										</c:when>
+									</c:choose>
+								</c:forEach>
 								</div>
-								<div class="col-8">
-									<h4>
-										<a
-											href="https://map.naver.com/v5/entry/place/17088184?c=14114156.0210482,3953442.7048554,13,0,0,0,dh&placePath=%2Fhome&entry=plt"><strong>백약이오름</strong></a> 
-									</h4>
-									<p align="center">
-										<a
-											href="https://map.naver.com/v5/directions/-/14114156.025328215,3953442.7052930277,%EB%B0%B1%EC%95%BD%EC%9D%B4%EC%98%A4%EB%A6%84,17088184,PLACE_POI/-/transit?c=14112292.8710108,3953442.7052930,13,0,0,0,dh&entry=plt">
-											제주 서귀포시 표선면 성읍리 산1</a>
-									</p>
-								</div>
-								<div class="col-4">
-									<a class="image fit"><img src="../images/attraction/성읍민속마을.jpg"
-										alt="" /></a>
-								</div>
-								<div class="col-8">
-									<h4>
-										<a
-											href="https://map.naver.com/v5/entry/place/13491577?c=14115445.8286087,3946769.0579056,13,0,0,0,dh&placePath=%2Fhome&entry=plt"><strong>성읍민속마을</strong></a> 
-									</h4>
-									<p align="center">
-										<a
-											href="https://map.naver.com/v5/directions/-/14115445.828608293,3946769.0579054225,%EC%84%B1%EC%9D%8D%EB%AF%BC%EC%86%8D%EB%A7%88%EC%9D%84,13491577,PLACE_POI/-/transit?c=14113582.6742909,3946769.0579054,13,0,0,0,dh&entry=plt">
-											제주 서귀포시 표선면 성읍리 3294</a>
-									</p>
-								</div>
-								<div class="col-4">
-									<a class="image fit"><img src="../images/attraction/표선해수욕장.jpg"
-										alt="" /></a>
-								</div>
-								<div class="col-8">
-									<h4>
-										<a
-											href="https://map.naver.com/v5/entry/place/13491363?c=14119801.2370818,3938658.9829629,13,0,0,0,dh&placePath=%2Fhome&entry=plt"><strong>표선해수욕장</strong></a> 
-									</h4>
-									<p align="center">
-										<a
-											href="https://map.naver.com/v5/directions/-/14119801.237081427,3938658.982962845,%ED%91%9C%EC%84%A0%ED%95%B4%EC%88%98%EC%9A%95%EC%9E%A5,13491363,PLACE_POI/-/transit?c=14117938.0827640,3938658.9829628,13,0,0,0,dh&entry=plt">
-											제주 서귀포시 표선면 표선리</a>
-									</p>
-								</div>
-								<div class="col-4">
-									<a class="image fit"><img src="../images/attraction/허브동산.jpg"
-										alt="" /></a>
-								</div>
-								<div class="col-8">
-									<h4>
-										<a
-											href="https://map.naver.com/v5/entry/place/11656926?c=14116524.2250434,3939162.9678116,15,0,0,0,dh"><strong>허브동산</strong></a> 
-									</h4>
-									<p align="center">
-										<a
-											href="https://map.naver.com/v5/directions/-/14116990.008056778,3939162.9678115584,%EC%A0%9C%EC%A3%BC%ED%97%88%EB%B8%8C%EB%8F%99%EC%82%B0,11656926,PLACE_POI/-/transit?c=14116524.2250434,3939162.9678116,15,0,0,0,dh">
-											제주 서귀포시 표선면 돈오름로 170</a>
-									</p>
-								</div>
-								<div class="col-4">
-									<a class="image fit"><img src="../images/attraction/개오름.jpg"
-										alt="" /></a>
-								</div>
-								<div class="col-8">
-									<h4>
-										<a
-											href="https://map.naver.com/v5/entry/place/17087735?c=14111245.4881858,3951530.6996835,15,0,0,0,dh"><strong>개오름</strong></a> 
-									</h4>
-									<p align="center">
-										<a
-											href="https://map.naver.com/v5/directions/-/14112178.256463092,3951530.6996834595,%EA%B0%9C%EC%98%A4%EB%A6%84,17087735,PLACE_POI/-/transit?c=14111712.4734497,3951530.6996835,15,0,0,0,dh">
-											제주 서귀포시 표선면 성읍이리로57번길 162</a>
-									</p>
+								<div class="container">
+								<div class="row">
+									<div class="col">
+										<ul class="pagination justify-content-center"
+											style="margin-top: 30px;">
+											<!-- 1. 이전 페이지 활성화 여부  -->
+											<c:if test="${adpageMaker.prev }">
+												<li class="page-item"><a class="page-link"
+													href="Pyoseon_Attraction?pageNum=${adpageMaker.adStartPage -1 }">Previous</a></li>
+											</c:if>
+											<!-- 2. 페이지번호 활성화 여부 -->
+											<c:forEach var="num" begin="${adpageMaker.adStartPage }"
+												end="${adpageMaker.adEndPage}">
+												<li
+													class="page-item ${adpageMaker.adcri.pageNum == num ? 'active':'' }"><a
+													class="page-link" href="Pyoseon_Attraction?num1=15&pageNum=${num }">${num }</a></li>
+											</c:forEach>
+											<!-- 3. 다음 버튼 활성화 여부 -->
+											<c:if test="${adpageMaker.next }">
+												<li class="page-item"><a class="page-link"
+													href="Pyoseon_Attraction?pageNum=${adpageMaker.adEndPage +1 }">Next</a></li>
+											</c:if>
+										</ul>
+									</div>
 								</div>
 							</div>
-							<hr size="50" style="top: 10px; margin: 70px">
 						</section>
 					</div>
 				</article>
 			</div>
-
 		</div>
 	</div>
 

@@ -3,11 +3,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>마라도 관광지</title>
+<title>마라도 관광지(13)</title>
 <meta charset="utf-8" />
 
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/assets/css/main.css" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 </head>
 <body class="no-sidebar is-preload">
 
@@ -30,93 +31,71 @@
 		<div class="wrapper style1">
 			<div class="container">
 				<article id="main" class="special">
-					<div class="col-8 col-12-mobile" id = "content">
+					<div class="col-8 col-12-mobile" id="content">
 						<section>
 							<hr size="50" style="top: 30px; margin-bottom: 30px">
+							<c:choose>
+								<c:when test="${sessionScope.user_admin == 1}">
+									<button type="button"
+										style="margin-top: 30px; margin-left: 1200px"
+										class='btn btn-default'
+										onclick="location.href='/admin/adRegister'">게시물 등록</button>
+								</c:when>
+							</c:choose>
 							<div class="row gtr-50" style="align-items: center">
-
-								<div class="col-4">
-									<a class="image fit"><img src="../images/attraction/마라도등대.jpg"
-										alt="" /></a>
+								<c:forEach var="admin" items="${fa_list }">
+									<c:choose>
+										<c:when test="${admin.lnum == 13 && admin.fanum == 1}">
+											<div class="col-4">
+												<a class="image fit"><img src="${admin.ilink }" alt="" /></a>
+											</div>
+											<div class="col-8">
+												<h4>
+													<a href="${admin.link }"><strong>${admin.name }</strong></a>
+												</h4>
+												<p align="center">
+													<a href="${admin.link }">${admin.addr }</a>
+												</p>
+												<c:choose>
+											<c:when test="${sessionScope.user_admin == 1}">
+											<button type="button" class="btn btn-default" onclick="location.href='/admin/adModify?num=${admin.nno}'">수정</button>
+										    </c:when>
+										    </c:choose>
+											</div>
+										</c:when>
+									</c:choose>
+								</c:forEach>
 								</div>
-								<div class="col-8">
-									<h4>
-										<a
-											href="https://map.naver.com/v5/entry/place/20054479?c=14055331.6783154,3910808.1481120,15,0,0,0,dh"><strong>마라도등대</strong></a> 
-									</h4>
-									<p align="center">
-										<a
-											href="https://map.naver.com/v5/directions/-/14056264.446592618,3910808.14811204,%EB%A7%88%EB%9D%BC%EB%8F%84%EB%93%B1%EB%8C%80,20054479,PLACE_POI/-/transit?c=14055798.6635792,3910808.1481120,15,0,0,0,dh">
-											제주 서귀포시 대정읍 마라로 165</a>
-									</p>
-								</div>
-								<div class="col-4">
-									<a class="image fit"><img src="../images/attraction/최남단비.jpg"
-										alt="" /></a>
-								</div>
-								<div class="col-8">
-									<h4>
-										<a
-											href="https://map.naver.com/v5/entry/place/17067538?c=14055241.6208473,3910430.4655907,15,0,0,0,dh"><strong>최남단비</strong></a> 
-									</h4>
-									<p align="center">
-										<a
-											href="https://map.naver.com/v5/directions/-/14056174.389124561,3910430.4655906707,%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD%EC%B5%9C%EB%82%A8%EB%8B%A8%EB%B9%84,17067538,PLACE_POI/-/transit?c=14055708.6061112,3910430.4655907,15,0,0,0,dh">
-											제주 서귀포시 대정읍 가파리</a>
-									</p>
-								</div>
-								<div class="col-4">
-									<a class="image fit"><img src="../images/attraction/마라도성당.jpg"
-										alt="" /></a>
-								</div>
-								<div class="col-8">
-									<h4>
-										<a
-											href="https://map.naver.com/v5/entry/place/17067531?c=14055281.1392665,3910677.3394173,15,0,0,0,dh"><strong>마라도성당</strong></a> 
-									</h4>
-									<p align="center">
-										<a
-											href="https://map.naver.com/v5/directions/-/14056213.907543797,3910677.3394173235,%EB%A7%88%EB%9D%BC%EB%8F%84%EC%84%B1%EB%8B%B9,17067531,PLACE_POI/-/transit?c=14055748.1245304,3910677.3394173,15,0,0,0,dh">
-											제주 서귀포시 대정읍 마라로 153 마라도성당</a>
-									</p>
-								</div>
-								<div class="col-4">
-									<a class="image fit"><img src="../images/attraction/장군바위.jpg"
-										alt="" /></a>
-								</div>
-								<div class="col-8">
-									<h4>
-										<a
-											href="https://map.naver.com/v5/entry/place/17067587?c=14055254.0997622,3910358.7900922,15,0,0,0,dh"><strong>장군바위</strong></a> 
-									</h4>
-									<p align="center">
-										<a
-											href="https://map.naver.com/v5/directions/-/14056186.868039485,3910358.790092215,%EC%9E%A5%EA%B5%B0%EB%B0%94%EC%9C%84,17067587,PLACE_POI/-/transit?c=14055721.0850261,3910358.7900922,15,0,0,0,dh">
-											제주 서귀포시 대정읍 가파리</a>
-									</p>
-								</div>
-								<div class="col-4">
-									<a class="image fit"><img src="../images/attraction/선인장자생지.jpg"
-										alt="" /></a>
-								</div>
-								<div class="col-8">
-									<h4>
-										<a
-											href="https://map.naver.com/v5/entry/place/17067743?c=14055368.2022403,3910830.6098216,15,0,0,0,dh"><strong>선인장자생지</strong></a> 
-									</h4>
-									<p align="center">
-										<a
-											href="https://map.naver.com/v5/directions/-/14056300.970517542,3910830.609821573,%EC%84%A0%EC%9D%B8%EC%9E%A5%EC%9E%90%EC%83%9D%EC%A7%80,17067743,PLACE_POI/-/transit?c=14055835.1875042,3910830.6098216,15,0,0,0,dh">
-											제주 서귀포시 대정읍 가파리</a>
-									</p>
+								<div class="container">
+								<div class="row">
+									<div class="col">
+										<ul class="pagination justify-content-center"
+											style="margin-top: 30px;">
+											<!-- 1. 이전 페이지 활성화 여부  -->
+											<c:if test="${adpageMaker.prev }">
+												<li class="page-item"><a class="page-link"
+													href="Mara_Attraction?pageNum=${adpageMaker.adStartPage -1 }">Previous</a></li>
+											</c:if>
+											<!-- 2. 페이지번호 활성화 여부 -->
+											<c:forEach var="num" begin="${adpageMaker.adStartPage }"
+												end="${adpageMaker.adEndPage}">
+												<li
+													class="page-item ${adpageMaker.adcri.pageNum == num ? 'active':'' }"><a
+													class="page-link" href="Mara_Attraction?num1=13&pageNum=${num }">${num }</a></li>
+											</c:forEach>
+											<!-- 3. 다음 버튼 활성화 여부 -->
+											<c:if test="${adpageMaker.next }">
+												<li class="page-item"><a class="page-link"
+													href="Mara_Attraction?pageNum=${adpageMaker.adEndPage +1 }">Next</a></li>
+											</c:if>
+										</ul>
+									</div>
 								</div>
 							</div>
-							<hr size="50" style="top: 10px; margin: 70px">
 						</section>
 					</div>
 				</article>
 			</div>
-
 		</div>
 	</div>
 

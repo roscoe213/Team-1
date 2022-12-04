@@ -140,10 +140,5 @@
 			FROM MP_FILE
 			WHERE FILE_NO = #{FILE_NO}
 	</select>
-    
-    
-	
-	
-	
 
 </mapper>

@@ -105,7 +105,7 @@
 														<button type="button" class="btn btn-primary"
 															onclick="register()">등록</button>
 														<button type="button" class="btn btn-primary"
-															onclick="location.href='list?pageNum=${cri.pageNum}&count=${cri.count }'">취소</button>
+															onclick="location.href='javascript:history.back();'">취소</button>
 													</div>
 													
 												</form>
