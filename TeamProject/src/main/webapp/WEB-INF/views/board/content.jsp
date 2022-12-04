@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -12,8 +13,6 @@
 <link rel="stylesheet" href="../assets/css/reply.css" />
 <script src="../assets/js/jquery.min.js"></script>
 <script src="../assets/js/bootstrap.bundle.min.js"></script>
-
-
 
 </head>
 <body class="right-sidebar is-preload">
@@ -203,13 +202,33 @@
 						</div>
 					</div>
 				</div>
-			</div>
-
-		</div>
-
-
-	</div>
-
+        
+				<form id="infoForm" action="modify" method="get">
+					<input type="hidden" id="bno" name="num" value='<c:out value="${board.bno}"/>'>
+					<input type="hidden" name="pageNum" value='<c:out value="${cri.pageNum}"/>'>
+					<input type="hidden" name="count" value='<c:out value="${cri.count}"/>'>	
+					<input type="hidden" name="type" value="${cri.type }">
+					<input type="hidden" name="keyword" value="${cri.keyword }">	
+				</form>
+			
+			
+<script src="../assets/js/jquery.min.js"></script>			
+	
+<script>
+	var form = $("#infoForm");
+	
+	$("#list_btn").on("click", function(e){
+		form.find("#bno").remove();
+		form.attr("action", "/board/list");
+		form.submit();
+	});
+	
+	$("#modify_btn").on("click", function(e){
+		form.attr("action", "/board/modify");
+		form.submit();
+	});	
+</script>		
+				
 	<script src="../assets/js/reply.js"></script>
 
 	<script>

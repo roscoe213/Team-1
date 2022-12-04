@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace속성에는 사용할 매퍼의 인터페이스를 경로 지정 -->  
+<mapper namespace="com.company.board.mapper.BoardAttachMapper">
+
+	
+	<select id="insert" >
+		insert into tbl_attach (uuid, uploadpath, filename, filetype, seq_bno)
+		values (#{uuid}, #{uploadPath}, #{fileName}, #{fileType}, #{seq_bno})
+	</select>
+	
+	<delete id="delete">
+		delete from tbl_attach where uuid = #{uuid}
+	</delete>
+
+	<select id="fileByBno" resultType="com.company.board.command.BoardAttachVO">
+	    select * from tbl_attach where seq_bno =#{seq_bno}
+	</select>
+
+</mapper>
