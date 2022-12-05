@@ -1,6 +1,7 @@
 package com.company.member.command;
 
 import java.util.Date;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,5 +18,7 @@ public class MemberVO {
 	private String nickName;
 	private Date regDate;
 	private int admin;
+	
+	private List<MemberImgVO> imageList;
 
 }

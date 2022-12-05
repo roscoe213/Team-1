@@ -76,7 +76,7 @@
 												end="${adpageMaker.adEndPage}">
 												<li
 													class="page-item ${adpageMaker.adcri.pageNum == num ? 'active':'' }"><a
-													class="page-link" href="Aewol_Attraction?num1=1&pageNum=${num }">${num }</a></li>
+													class="page-link" href="Aewol_Attraction?num1=1&count_oracle=${adcri.count_oracle}&adpageStart=${adcri.adpageStart}&pageNum=${num }">${num }</a></li>
 											</c:forEach>
 											<!-- 3. 다음 버튼 활성화 여부 -->
 											<c:if test="${adpageMaker.next }">
