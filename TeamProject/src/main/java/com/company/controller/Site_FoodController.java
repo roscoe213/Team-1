@@ -13,6 +13,7 @@ import com.company.admin.command.AdminCriteria;
 import com.company.admin.command.AdminPageVO;
 import com.company.admin.command.AdminVO;
 import com.company.admin.service.AdminService;
+import com.company.board.command.Criteria;
 
 @Controller
 @RequestMapping("/food/*")
@@ -228,20 +229,21 @@ public class Site_FoodController {
 		model.addAttribute("adpageMaker", new AdminPageVO(adcri, total));
 		return "/food/Gujwa_Food";
 	}
-	
+
 	@RequestMapping("/adMapf")
-	public String adMap(@RequestParam("num") int num, Model model, @ModelAttribute("adcri") AdminCriteria adcri) { // 8.페이징에서
-																													// 추가할
-																													// 내용이
-																													// 존재함."
+	public String adMapf(@RequestParam("num") int num,
+			Model model, @ModelAttribute("cri") Criteria cri){       //8.페이징에서 추가할 내용이 존재함."
 		System.out.println("===컨트롤러===");
 		System.out.println(num);
-
-		// num(bno)을 가지고 있는 데이터(row)를 불러오는 메서드
+		
+		
+		//num(bno)을 가지고 있는 데이터(row)를 불러오는 메서드
 		AdminVO vo = service.adContent(num);
-		model.addAttribute("link", vo);
-
+		model.addAttribute("link", vo);	
+		
+		
+		
 		return "food/adMapf";
 	}
-
+	
 }
