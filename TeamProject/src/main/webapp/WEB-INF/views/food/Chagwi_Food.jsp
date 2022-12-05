@@ -8,7 +8,8 @@
 
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/assets/css/main.css" />
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 </head>
 <body class="no-sidebar is-preload">
 
@@ -60,14 +61,15 @@
 													<c:when test="${sessionScope.user_admin == 1}">
 														<button type="button" class='btn btn-default'
 															onclick="location.href='/admin/adModify?num=${admin.nno}'"style="margin-bottom: 50px">수정</button>
+
 													</c:when>
 												</c:choose>
 											</div>
 										</c:when>
 									</c:choose>
 								</c:forEach>
-								</div>
-								<div class="container">
+							</div>
+							<div class="container">
 								<div class="row">
 									<div class="col">
 										<ul class="pagination justify-content-center"
@@ -82,7 +84,7 @@
 												end="${adpageMaker.adEndPage}">
 												<li
 													class="page-item ${adpageMaker.adcri.pageNum == num ? 'active':'' }"><a
-													class="page-link" href="Chagwi_Food?num1=3&pageNum=${num }">${num }</a></li>
+													class="page-link" href="Chagwi_Food?num1=3&count_oracle=${adcri.count_oracle}&adpageStart=${adcri.adpageStart}&pageNum=${num }">${num }</a></li>
 											</c:forEach>
 											<!-- 3. 다음 버튼 활성화 여부 -->
 											<c:if test="${adpageMaker.next }">

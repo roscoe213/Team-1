@@ -41,5 +41,17 @@
      <select id="findPw" resultType="int">
 		select count(*) as result from members where email = #{email} and name = #{name}
 	</select>
-
+	
+	<insert id="insert">
+		insert into mem_image (uuid, uploadpath, filename,filetype, email)
+		value (#{uuid},#{uploadpath},#{filename},#{filetype},#{email})
+	</insert>
+	
+	<delete id="delete">
+		delete from mem_image where uuid = #{uuid}
+	</delete>
+	
+	<select id="findByEmail" resultType="com.company.member.command.MemberImgVO">
+		select * from mem_image where email = #{email}
+	</select>
 </mapper>
