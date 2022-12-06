@@ -24,7 +24,7 @@ public class Site_AttractionController {
 
 	@RequestMapping("/Attraction_Map")
 	public String Attraction_Map(Model model,AdminCriteria adcri) {
-		model.addAttribute("adcri", adcri);
+		model.addAttribute("adcri", adcri);		
 		return "/attraction/Attraction_Map";
 	}
 

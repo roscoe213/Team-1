@@ -19,5 +19,4 @@ public class MemberVO {
 	private Date regDate;
 	private int admin;
 
-
 }

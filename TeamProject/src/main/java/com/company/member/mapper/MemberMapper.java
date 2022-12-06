@@ -1,6 +1,4 @@
 package com.company.member.mapper;
-
-
 import com.company.member.command.MemberVO;
 
 public interface MemberMapper {
