@@ -229,9 +229,7 @@ public class Site_AttractionController {
 
 	@RequestMapping("/adMapa")
 	public String adMap(@RequestParam("num") int num, Model model, @ModelAttribute("adcri") AdminCriteria adcri) { // 8.페이징에서
-																													// 추가할
-																													// 내용이
-																													// 존재함."
+																											
 		System.out.println("===컨트롤러===");
 		System.out.println(num);
 
@@ -241,5 +239,4 @@ public class Site_AttractionController {
 
 		return "attraction/adMapa";
 	}
-
 }

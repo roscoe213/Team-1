@@ -1,19 +1,45 @@
 package com.company.controller;
 
 
+import java.io.File;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.UUID;
+
+import java.util.Random;
+
+
+import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpSession;
+
 
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+
+
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import com.company.member.command.MemberVO;
 import com.company.member.service.MemberService;
-
-
 
 @Controller
 @RequestMapping("/member/*")
@@ -147,6 +173,43 @@ public class MemberController {
 			System.out.println(result);
 			return result;
 		}
+		//이메일 인증
+		@Autowired
+		//@Resource(name="mailSender")
+		private JavaMailSender mailSender;
+				@RequestMapping(value="/mailCheck",method=RequestMethod.GET)
+				@ResponseBody
+				public String mailCheckGET(String email) throws Exception{
+					System.out.println(email);
+					//인증번호 생성
+					Random random = new Random();
+					int checkNum = random.nextInt(888888) + 111111;
+					System.out.println("인증번호 : "+ checkNum);
+					System.out.println(checkNum);
+					/*이메일 보내기*/
+					String setFrom = "brandy1313@naver.com";
+					String toMail = email;
+					String title = "인증 번호를 받으세요";
+					String content = "제주사이트입니다."+"인증 번호는" + checkNum + "입니다";
+					 
+					try {
+						MimeMessage message = mailSender.createMimeMessage();
+						MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
+						helper.setFrom(setFrom);
+						helper.setTo(toMail);
+						helper.setSubject(title);
+						helper.setText(content,true);
+						mailSender.send(message);
+					} catch (Exception e) {
+						 e.printStackTrace();
+					}
+					String data = Integer.toString(checkNum);
+					
+					return data;
+					
+					
+				}
+				
 		
 	//	닉네임 중복 체크
 		@RequestMapping(value = "/checkNickName", method = RequestMethod.POST)
@@ -201,6 +264,11 @@ public class MemberController {
 			}
 			
 		}
+			@RequestMapping("/gofindPwForm")
+		public String gofindPwForm(MemberVO vo) {
+			return "member/newPassword";
+			
+		}
 		
 		@RequestMapping("/newpwUpdateForm")
 		public String newpwUpdateForm(MemberVO vo) {
@@ -213,7 +281,12 @@ public class MemberController {
 				}
 			return "redirect:/";
 		}
+
 		
+
+			
+			
+
 }
 
 
