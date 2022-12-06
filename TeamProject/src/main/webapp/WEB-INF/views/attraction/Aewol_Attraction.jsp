@@ -3,11 +3,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>애월읍 관광지(1)</title>
+<title>애월읍(1)</title>
 <meta charset="utf-8" />
 
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/assets/css/main.css" />
+<link rel="stylesheet"
+	href="../assets/css/page.css" />
 </head>
 <body class="no-sidebar is-preload">
 
@@ -19,7 +21,7 @@
 		<div class="inner">
 			<header>
 				<h1>
-					<a href= "../attraction/Attraction_Map" id="logo">애 월 읍</a>
+					<a href="../food/Food_Map" id="logo">애 월 읍</a>
 				</h1>
 			</header>
 		</div>
@@ -55,41 +57,47 @@
 												<p align="center">
 													<a href="${admin.link }">${admin.addr }</a>
 												</p>
+
+												<c:choose>
+													<c:when test="${sessionScope.user_admin == 1}">
+														<button type="button" class="btn btn-default"
+															onclick="location.href='/admin/adModify?num=${admin.nno}'">수정</button>
+													</c:when>
+												</c:choose>
+
 											</div>
-											<div class="container">
-								<div class="row">
-									<div class="col">
-										<ul class="pagination justify-content-center"
-											style="margin-top: 30px;">
+										</c:when>
+									</c:choose>
+								</c:forEach>
+							</div>
+							
+								<div class="page_wrap">
+									<div class="page_nation">
+										
 											<!-- 1. 이전 페이지 활성화 여부  -->
 											<c:if test="${adpageMaker.prev }">
-												<li class="page-item"><a class="page-link"
-													href="Mara_Attraction?pageNum=${adpageMaker.adStartPage -1 }">Previous</a></li>
+												<a class="arrow prev"
+													href="Aewol_Attraction?pageNum=${adpageMaker.adStartPage -1 }">Previous</a>
 											</c:if>
 											<!-- 2. 페이지번호 활성화 여부 -->
 											<c:forEach var="num" begin="${adpageMaker.adStartPage }"
 												end="${adpageMaker.adEndPage}">
-												<li
-													class="page-item ${adpageMaker.adcri.pageNum == num ? 'active':'' }"><a
-													class="page-link" href="Aewol_Attraction?num1=1&count_oracle=${adcri.count_oracle}&adpageStart=${adcri.adpageStart}&pageNum=${num }">${num }</a></li>
+												<a class=" ${adpageMaker.adcri.pageNum == num ? 'active':'' }" href="Aewol_Attraction?num1=1&count_oracle=${adpageMaker.adcri.count_oracle}&adpageStart=${adpageMaker.adcri.adpageStart}&pageNum=${num }">${num }</a>
 											</c:forEach>
 											<!-- 3. 다음 버튼 활성화 여부 -->
 											<c:if test="${adpageMaker.next }">
-												<li class="page-item"><a class="page-link"
-													href="Aewol_Attraction?pageNum=${adpageMaker.adEndPage +1 }">Next</a></li>
+												<a class="arrow next"
+													href="Aewol_Attraction?pageNum=${adpageMaker.adEndPage +1 }">Next</a>
 											</c:if>
-										</ul>
+										
 									</div>
 								</div>
-							</div>
-										</c:when>
-									</c:choose>
-								</c:forEach>
-								</div>
+						
 						</section>
 					</div>
 				</article>
 			</div>
+
 		</div>
 	</div>
 

@@ -1,5 +1,6 @@
 package com.company.controller;
 
+
 import java.io.File;
 
 import java.io.FileOutputStream;
@@ -17,7 +18,10 @@ import java.util.Random;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpSession;
 
+
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -28,19 +32,14 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.util.FileCopyUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.company.member.command.MemberVO;
 import com.company.member.service.MemberService;
-
 
 @Controller
 @RequestMapping("/member/*")
@@ -57,28 +56,6 @@ public class MemberController {
 
 	@Autowired
 	public MemberService service;
-	
-	// 업로드 폴더 생성
-	private String getFolder() {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		Date date = new Date();
-		String str =  sdf.format(date);
-		return str.replace("-", File.separator);
-	}
-	
-	// 이미지 파일 판단
-	private boolean checkImageType(File file) {
-		try {
-			String contentType = Files.probeContentType(file.toPath());
-			
-			return contentType.startsWith("image");
-		} catch (IOException e) {
-			e.getStackTrace();
-		}
-		return false;
-	}
-	
-
 	
 	// 로그인 회원가입 페이지
 	@RequestMapping("/join_loginPage")
@@ -304,8 +281,12 @@ public class MemberController {
 				}
 			return "redirect:/";
 		}
+
+		
+
 			
 			
+
 }
 
 

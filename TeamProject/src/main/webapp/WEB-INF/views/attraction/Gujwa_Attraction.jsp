@@ -8,7 +8,8 @@
 
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/assets/css/main.css" />
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<link rel="stylesheet"
+	href="../assets/css/page.css" />
 </head>
 <body class="no-sidebar is-preload">
 
@@ -66,32 +67,27 @@
 									</c:choose>
 								</c:forEach>
 								</div>
-								<div class="container">
-								<div class="row">
-									<div class="col">
-										<ul class="pagination justify-content-center"
-											style="margin-top: 30px;">
+								<div class="page_wrap">
+									<div class="page_nation">
 											<!-- 1. 이전 페이지 활성화 여부  -->
 											<c:if test="${adpageMaker.prev }">
-												<li class="page-item"><a class="page-link"
-													href="Gujwa_Attraction?pageNum=${adpageMaker.adStartPage -1 }">Previous</a></li>
+												<a class="parrow prev"
+													href="Gujwa_Attraction?pageNum=${adpageMaker.adStartPage -1 }">Previous</a>
 											</c:if>
 											<!-- 2. 페이지번호 활성화 여부 -->
 											<c:forEach var="num" begin="${adpageMaker.adStartPage }"
 												end="${adpageMaker.adEndPage}">
-												<li
-													class="page-item ${adpageMaker.adcri.pageNum == num ? 'active':'' }"><a
-													class="page-link" href="Gujwa_Attraction?num1=7&count_oracle=${adcri.count_oracle}&adpageStart=${adcri.adpageStart}&pageNum=${num }">${num }</a></li>
+												<a class="${adpageMaker.adcri.pageNum == num ? 'active':'' }" href="Gujwa_Attraction?num1=7&count_oracle=${adpageMaker.adcri.count_oracle}&adpageStart=${adpageMaker.adcri.adpageStart}&pageNum=${num }">${num }</a>
 											</c:forEach>
 											<!-- 3. 다음 버튼 활성화 여부 -->
 											<c:if test="${adpageMaker.next }">
-												<li class="page-item"><a class="page-link"
-													href="Gujwa_Attraction?pageNum=${adpageMaker.adEndPage +1 }">Next</a></li>
+												<a class="arrow next"
+													href="Gujwa_Attraction?pageNum=${adpageMaker.adEndPage +1 }">Next</a>
 											</c:if>
-										</ul>
+										
 									</div>
 								</div>
-							</div>
+							
 						</section>
 					</div>
 				</article>
