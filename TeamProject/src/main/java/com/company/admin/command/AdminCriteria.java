@@ -33,7 +33,7 @@ public class AdminCriteria {
 			this.count = count;
 		}
 
-	public int getadpageStart() {
+	public int getAdpageStart() {
 //			return ((pageNum - 1) * count);  //mysql, mariadb인경우
 		return ((pageNum - 1) * count) + 1; // 오라클
 	}

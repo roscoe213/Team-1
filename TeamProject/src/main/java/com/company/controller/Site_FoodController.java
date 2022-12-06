@@ -29,7 +29,7 @@ public class Site_FoodController {
 
 	@RequestMapping("/Udo_Food")
 	public String Udo_Food(@RequestParam("num1") int num1,Model model,@RequestParam("adpageStart")int adpageStart,@RequestParam("count_oracle")int count_oracle, AdminCriteria adcri) {
-		ArrayList<AdminVO> falist = service.adGetList(count_oracle,adpageStart,num1);
+		ArrayList<AdminVO> falist = service.adGetListf(count_oracle,adpageStart,num1);
 
 		model.addAttribute("fa_list", falist);
 		// 게시글 전체 데이터 가져오기
@@ -40,7 +40,7 @@ public class Site_FoodController {
 
 	@RequestMapping("/Seongsan_Food")
 	public String Seongsan_Food(@RequestParam("num1") int num1,Model model,@RequestParam("adpageStart")int adpageStart,@RequestParam("count_oracle")int count_oracle, AdminCriteria adcri) {
-		ArrayList<AdminVO> falist = service.adGetList(count_oracle,adpageStart,num1);
+		ArrayList<AdminVO> falist = service.adGetListf(count_oracle,adpageStart,num1);
 
 		model.addAttribute("fa_list", falist);
 		// 게시글 전체 데이터 가져오기
@@ -51,7 +51,7 @@ public class Site_FoodController {
 
 	@RequestMapping("/Pyoseon_Food")
 	public String Pyoseon_Food(@RequestParam("num1") int num1,Model model,@RequestParam("adpageStart")int adpageStart,@RequestParam("count_oracle")int count_oracle, AdminCriteria adcri) {
-		ArrayList<AdminVO> falist = service.adGetList(count_oracle,adpageStart,num1);
+		ArrayList<AdminVO> falist = service.adGetListf(count_oracle,adpageStart,num1);
 
 		model.addAttribute("fa_list", falist);
 		// 게시글 전체 데이터 가져오기
@@ -62,7 +62,7 @@ public class Site_FoodController {
 
 	@RequestMapping("/Namwon_Food")
 	public String Namwon_Food(@RequestParam("num1") int num1,Model model,@RequestParam("adpageStart")int adpageStart,@RequestParam("count_oracle")int count_oracle, AdminCriteria adcri) {
-		ArrayList<AdminVO> falist = service.adGetList(count_oracle,adpageStart,num1);
+		ArrayList<AdminVO> falist = service.adGetListf(count_oracle,adpageStart,num1);
 
 		model.addAttribute("fa_list", falist);
 		// 게시글 전체 데이터 가져오기
@@ -73,7 +73,7 @@ public class Site_FoodController {
 
 	@RequestMapping("/Seogwipo_Food")
 	public String Seogwipo_Food(@RequestParam("num1") int num1,Model model,@RequestParam("adpageStart")int adpageStart,@RequestParam("count_oracle")int count_oracle, AdminCriteria adcri) {
-		ArrayList<AdminVO> falist = service.adGetList(count_oracle,adpageStart,num1);
+		ArrayList<AdminVO> falist = service.adGetListf(count_oracle,adpageStart,num1);
 
 		model.addAttribute("fa_list", falist);
 		// 게시글 전체 데이터 가져오기
@@ -84,7 +84,7 @@ public class Site_FoodController {
 
 	@RequestMapping("/Jungmun_Food")
 	public String Jungmun_Food(@RequestParam("num1") int num1,Model model,@RequestParam("adpageStart")int adpageStart,@RequestParam("count_oracle")int count_oracle, AdminCriteria adcri) {
-		ArrayList<AdminVO> falist = service.adGetList(count_oracle,adpageStart,num1);
+		ArrayList<AdminVO> falist = service.adGetListf(count_oracle,adpageStart,num1);
 
 		model.addAttribute("fa_list", falist);
 		// 게시글 전체 데이터 가져오기
@@ -95,7 +95,7 @@ public class Site_FoodController {
 
 	@RequestMapping("/Andeok_Food")
 	public String Andeok_Food(@RequestParam("num1") int num1,Model model,@RequestParam("adpageStart")int adpageStart,@RequestParam("count_oracle")int count_oracle, AdminCriteria adcri) {
-		ArrayList<AdminVO> falist = service.adGetList(count_oracle,adpageStart,num1);
+		ArrayList<AdminVO> falist = service.adGetListf(count_oracle,adpageStart,num1);
 
 		model.addAttribute("fa_list", falist);
 		// 게시글 전체 데이터 가져오기
@@ -106,7 +106,7 @@ public class Site_FoodController {
 
 	@RequestMapping("/Daejung_Food")
 	public String Daejung_Food(@RequestParam("num1") int num1,Model model,@RequestParam("adpageStart")int adpageStart,@RequestParam("count_oracle")int count_oracle, AdminCriteria adcri) {
-		ArrayList<AdminVO> falist = service.adGetList(count_oracle,adpageStart,num1);
+		ArrayList<AdminVO> falist = service.adGetListf(count_oracle,adpageStart,num1);
 
 		model.addAttribute("fa_list", falist);
 		// 게시글 전체 데이터 가져오기
@@ -117,7 +117,7 @@ public class Site_FoodController {
 
 	@RequestMapping("/Gapa_Food")
 	public String Gapa_Food(@RequestParam("num1") int num1,Model model,@RequestParam("adpageStart")int adpageStart,@RequestParam("count_oracle")int count_oracle, AdminCriteria adcri) {
-		ArrayList<AdminVO> falist = service.adGetList(count_oracle,adpageStart,num1);
+		ArrayList<AdminVO> falist = service.adGetListf(count_oracle,adpageStart,num1);
 
 		model.addAttribute("fa_list", falist);
 		// 게시글 전체 데이터 가져오기
@@ -128,7 +128,7 @@ public class Site_FoodController {
 
 	@RequestMapping("/Mara_Food")
 	public String Mara_Food(@RequestParam("num1") int num1,Model model,@RequestParam("adpageStart")int adpageStart,@RequestParam("count_oracle")int count_oracle, AdminCriteria adcri) {
-		ArrayList<AdminVO> falist = service.adGetList(count_oracle,adpageStart,num1);
+		ArrayList<AdminVO> falist = service.adGetListf(count_oracle,adpageStart,num1);
 
 		model.addAttribute("fa_list", falist);
 		// 게시글 전체 데이터 가져오기
@@ -139,7 +139,7 @@ public class Site_FoodController {
 
 	@RequestMapping("/Hankyung_Food")
 	public String Hankyung_Food(@RequestParam("num1") int num1,Model model,@RequestParam("adpageStart")int adpageStart,@RequestParam("count_oracle")int count_oracle, AdminCriteria adcri) {
-		ArrayList<AdminVO> falist = service.adGetList(count_oracle,adpageStart,num1);
+		ArrayList<AdminVO> falist = service.adGetListf(count_oracle,adpageStart,num1);
 
 		model.addAttribute("fa_list", falist);
 		// 게시글 전체 데이터 가져오기
@@ -150,7 +150,7 @@ public class Site_FoodController {
 
 	@RequestMapping("/Chagwi_Food")
 	public String Chagwi_Food(@RequestParam("num1") int num1,Model model,@RequestParam("adpageStart")int adpageStart,@RequestParam("count_oracle")int count_oracle, AdminCriteria adcri) {
-		ArrayList<AdminVO> falist = service.adGetList(count_oracle,adpageStart,num1);
+		ArrayList<AdminVO> falist = service.adGetListf(count_oracle,adpageStart,num1);
 
 		model.addAttribute("fa_list", falist);
 		// 게시글 전체 데이터 가져오기
@@ -162,7 +162,7 @@ public class Site_FoodController {
 	@RequestMapping("/Biyang_Food")
 	public String Biyang_Food(@RequestParam("num1") int num1,Model model,@RequestParam("adpageStart")int adpageStart,@RequestParam("count_oracle")int count_oracle, AdminCriteria adcri) {
 
-		ArrayList<AdminVO> falist = service.adGetList(count_oracle,adpageStart,num1);
+		ArrayList<AdminVO> falist = service.adGetListf(count_oracle,adpageStart,num1);
 
 		model.addAttribute("fa_list", falist);
 		// 게시글 전체 데이터 가져오기
@@ -173,7 +173,7 @@ public class Site_FoodController {
 
 	@RequestMapping("/Hanlim_Food")
 	public String Hanlim_Food(@RequestParam("num1") int num1,Model model,@RequestParam("adpageStart")int adpageStart,@RequestParam("count_oracle")int count_oracle, AdminCriteria adcri) {
-		ArrayList<AdminVO> falist = service.adGetList(count_oracle,adpageStart,num1);
+		ArrayList<AdminVO> falist = service.adGetListf(count_oracle,adpageStart,num1);
 
 		model.addAttribute("fa_list", falist);
 		// 게시글 전체 데이터 가져오기
@@ -186,7 +186,7 @@ public class Site_FoodController {
 	
 	@RequestMapping("/Aewol_Food")
 	public String Aewol_Food(@RequestParam("num1") int num1,Model model,@RequestParam("adpageStart")int adpageStart,@RequestParam("count_oracle")int count_oracle,AdminCriteria adcri) {
-		ArrayList<AdminVO> falist = service.adGetList(count_oracle,adpageStart,num1);
+		ArrayList<AdminVO> falist = service.adGetListf(count_oracle,adpageStart,num1);
 
 		model.addAttribute("fa_list", falist);
 		// 게시글 전체 데이터 가져오기
@@ -198,7 +198,7 @@ public class Site_FoodController {
 
 	@RequestMapping("/Jeju_Food")
 	public String Jeju_food(@RequestParam("num1") int num1,Model model,@RequestParam("adpageStart")int adpageStart,@RequestParam("count_oracle")int count_oracle, AdminCriteria adcri) {
-		ArrayList<AdminVO> falist = service.adGetList(count_oracle,adpageStart,num1);
+		ArrayList<AdminVO> falist = service.adGetListf(count_oracle,adpageStart,num1);
 
 		model.addAttribute("fa_list", falist);
 		// 게시글 전체 데이터 가져오기
@@ -209,7 +209,7 @@ public class Site_FoodController {
 
 	@RequestMapping("/Jocheon_Food")
 	public String Jocheon_Food(@RequestParam("num1") int num1,Model model,@RequestParam("adpageStart")int adpageStart,@RequestParam("count_oracle")int count_oracle, AdminCriteria adcri) {
-		ArrayList<AdminVO> falist = service.adGetList(count_oracle,adpageStart,num1);
+		ArrayList<AdminVO> falist = service.adGetListf(count_oracle,adpageStart,num1);
 
 		model.addAttribute("fa_list", falist);
 		// 게시글 전체 데이터 가져오기
@@ -220,7 +220,7 @@ public class Site_FoodController {
 
 	@RequestMapping("/Gujwa_Food")
 	public String Gujwa_Food(@RequestParam("num1") int num1,Model model,@RequestParam("adpageStart")int adpageStart,@RequestParam("count_oracle")int count_oracle, AdminCriteria adcri) {
-		ArrayList<AdminVO> falist = service.adGetList(count_oracle,adpageStart,num1);
+		ArrayList<AdminVO> falist = service.adGetListf(count_oracle,adpageStart,num1);
 
 		model.addAttribute("fa_list", falist);
 		// 게시글 전체 데이터 가져오기
