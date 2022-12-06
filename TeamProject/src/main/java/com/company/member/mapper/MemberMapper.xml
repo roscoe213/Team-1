@@ -41,5 +41,4 @@
      <select id="findPw" resultType="int">
 		select count(*) as result from members where email = #{email} and name = #{name}
 	</select>
-
 </mapper>

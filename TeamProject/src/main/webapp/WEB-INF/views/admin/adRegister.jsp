@@ -23,7 +23,7 @@
 			<div class="inner">
 				<header>
 					<h1>
-						<a href="/board/list" id="logo">게시글 등록</a>
+						<a href="/food/Food_Map" id="logo">게시글 등록</a>
 					</h1>
 				</header>
 			</div>

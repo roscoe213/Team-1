@@ -9,6 +9,9 @@ import java.util.Map;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,12 +19,16 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.company.board.command.BoardAttachVO;
 import com.company.board.command.BoardVO;
 import com.company.board.command.Criteria;
 import com.company.board.command.PageVO;
 import com.company.board.service.BoardService;
+
 
 
 
@@ -71,6 +78,23 @@ public class BoardController {
 	 *	START WITH 1 
 	 *	INCREMENT BY 1 
 	 *	NOMAXVALUE NOCACHE;
+	 * 
+	 * 
+	 * -첨부파일 테이블생성 수정본-
+	 * 
+	 *	create table tbl_attach (
+     *	uuid varchar2(100) not null,
+     *	uploadPath varchar2(200) not null,
+     *	fileName varchar2(100) not null,
+     *	filetype char(1) default 'I',
+     *	seq_bno number(10,0)
+     *	);
+    
+     * alter table tbl_attach add constraint pk_attach primary key (uuid);
+    
+     * alter table tbl_attach add constraint fk_board_attach foreign key (seq_bno)
+     * references tbl_board(bno);
+	 * 
 	 * 
 	 * 
 	 * 
@@ -131,21 +155,25 @@ public class BoardController {
 	//GET 등록 화면으로 이동
 	//@RequestMapping(value = "/register",method=RequestMethod.GET)
 	@GetMapping("/register")   //GET방식으로 처리되는 경우 접속
-	public String register(Model model, @ModelAttribute("cri") Criteria cri) {
+	public String register(@ModelAttribute("cri") Criteria cri) {
 		System.out.println("화면처리");
 		
-		//top5 게시글 데이터 가져오기
-		List<BoardVO> lists = service.topList();
-		model.addAttribute("top_list", lists);
 		return "board/register";
 	}
 	
 	@PostMapping("/register")
-	public String register(BoardVO vo, MultipartHttpServletRequest mpRequest) throws Exception{
-		System.out.println("등록처리");
+	public String register(BoardVO vo) {
+		System.out.println("==========================");
+		System.out.println("등록처리 :" + vo);
+		
+		if (vo.getAttachList() != null) {
+			vo.getAttachList().forEach(attach -> System.out.println(attach));
+			
+		}
+		
 		
 		//서비스 처리 ... 
-		service.register(vo, mpRequest);
+		service.register(vo);
 		
 		return "redirect:/board/list";
 	}
@@ -170,8 +198,6 @@ public class BoardController {
 		List<BoardVO> lists = service.topList();
 		model.addAttribute("top_list", lists);
 		
-		List<Map<String, Object>> fileList = service.selectFileList(num);
-		model.addAttribute("file", fileList);
 		
 		
 		return "board/content";
@@ -229,24 +255,17 @@ public class BoardController {
 		
 		return "redirect:/board/list";
 	}
+	//첨부파일 가져오기
+		@GetMapping(value="/getAttachList",
+				produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+		@ResponseBody
+		public ResponseEntity<List<BoardAttachVO>> getAttachList(int seq_bno) {
+			System.out.println("getAttachList : "+ seq_bno);
+			return new ResponseEntity<List<BoardAttachVO>>(service.getAttachList(seq_bno), HttpStatus.OK);
+		}
 	
-	@RequestMapping("/fileDown")
-	public void fileDown(@RequestParam Map<String, Object> map, HttpServletResponse response) throws Exception{
-		Map<String, Object> resultMap = service.selectFileInfo(map);
-		String storedFileName = (String) resultMap.get("STORED_FILE_NAME");
-		String originalFileName = (String) resultMap.get("ORG_FILE_NAME");
-		
-		// 파일을 저장했던 위치에서 첨부파일을 읽어 byte[]형식으로 변환한다.
-		byte fileByte[] = org.apache.commons.io.FileUtils.readFileToByteArray(new File("C:\\mp\\file\\"+storedFileName));
-		
-		response.setContentType("application/octet-stream");
-		response.setContentLength(fileByte.length);
-		response.setHeader("Content-Disposition",  "attachment; fileName=\""+URLEncoder.encode(originalFileName, "UTF-8")+"\";");
-		response.getOutputStream().write(fileByte);
-		response.getOutputStream().flush();
-		response.getOutputStream().close();
-		
-	}
+	
+	
 	
 	
 

@@ -77,7 +77,7 @@ public int findPw(MemberVO vo) {
 	int result = mapper.findPw(vo);
 	
 	return result;
-}
-
+}	
+	
 
 }

@@ -58,7 +58,7 @@
 												</p>
 												<c:choose>
 											<c:when test="${sessionScope.user_admin == 1}">
-											<button type="button" class="btn btn-default" onclick="location.href='/admin/adModify?num=${admin.nno}'">수정</button>
+											<button type="button" class="btn btn-default" onclick="location.href='/admin/adModify?num=${admin.nno}'"style="margin-bottom: 50px">수정</button>
 										    </c:when>
 										    </c:choose>
 											</div>

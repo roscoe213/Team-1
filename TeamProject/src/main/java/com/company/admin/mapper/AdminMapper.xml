@@ -43,14 +43,26 @@
 	</update>
 
 		<!-- 페이징 쿼리 -->
-	<select id="pagingList"
-	 resultType="com.company.board.command.BoardVO" 
+	<select id="adPageLista"
+	 resultType="com.company.admin.command.AdminVO" parameterType="int"
 	>
 	<![CDATA[
 	 select * from 
 	 (select rownum as rnum, B.* from fa B
 	  where rownum <= #{count_oracle} order by nno desc)
-	  where #{pageStart} <= rnum
+	  where #{adpageStart} <= rnum and lnum = #{num1} and fanum = 1
+	  ]]>
+	 
+	</select>
+	
+	<select id="adPageListf"
+	 resultType="com.company.admin.command.AdminVO" parameterType="int"
+	>
+	<![CDATA[
+	 select * from 
+	 (select rownum as rnum, B.* from fa B
+	  where rownum <= #{count_oracle} order by nno desc)
+	  where #{adpageStart} <= rnum and lnum = #{num1} and fanum = 2
 	  ]]>
 	 
 	</select>
