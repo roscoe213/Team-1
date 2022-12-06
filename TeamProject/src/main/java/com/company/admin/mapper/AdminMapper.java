@@ -12,7 +12,6 @@ import com.company.board.command.Criteria;
 
 public interface AdminMapper {
 	
-
 	public ArrayList<AdminVO> adPageLista(@Param("count_oracle")int count_oracle,@Param("adpageStart")int adpageStart,@Param("num1")int num1);
 	public ArrayList<AdminVO> adPageListf(@Param("count_oracle")int count_oracle,@Param("adpageStart")int adpageStart,@Param("num1")int num1);
 

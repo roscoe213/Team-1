@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.company.admin.command.AdminCriteria;
 import com.company.admin.command.AdminVO;
 import com.company.admin.mapper.AdminMapper;
 
@@ -52,7 +51,7 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public void adDelete(int nno) {
-		// TODO Auto-generated method stub
+		mapper.adDelete(nno);
 
 	}
 

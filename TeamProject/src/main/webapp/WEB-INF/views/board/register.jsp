@@ -130,6 +130,7 @@
 		crossorigin="anonymous"></script>
 	
 	<script>
+	$(document).ready(function() {
 	
 	
 	var formObj = $("form[role='form']");
@@ -139,6 +140,10 @@
 		e.preventDefault();
 		
 		console.log("submit clicked");
+		if( $("#title").val() == ""){
+			  alert("글제목은 필수 입니다");
+			  return;
+		 }
 		
 		var str = "";
 		
@@ -175,9 +180,6 @@
 		}
 		return true;
 	}
-	
-	$(document).ready(function() {
-		
 		
 		$("input[type='file']").change(function(e) {
 			var formData = new FormData();

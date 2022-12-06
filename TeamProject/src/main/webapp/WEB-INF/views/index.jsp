@@ -20,9 +20,11 @@
 			<!-- Inner -->
 			<div class="inner">
 				<header>
-					<h1>
-						<a href="${pageContext.request.contextPath}" id="logo">🍊지금 여기 JEJU🍊</a>
-					</h1>
+					<div style="font-family: InkLipquid">
+						<h1>
+							<a href="${pageContext.request.contextPath}" id="logo">🍊지금 여기 JEJU🍊</a>
+						</h1>
+					</div>
 					<hr />
 				</header>
 				<footer>

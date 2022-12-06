@@ -18,6 +18,5 @@ public class MemberVO {
 	private String nickName;
 	private Date regDate;
 	private int admin;
-	
 
 }
