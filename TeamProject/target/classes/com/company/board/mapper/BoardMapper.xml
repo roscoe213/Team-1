@@ -21,7 +21,7 @@
 	<!-- 게시물 등록 -->
 	<insert id="insertBoard" parameterType="com.company.board.command.BoardVO" useGeneratedKeys="true" keyProperty="bno">
 		<selectKey keyProperty="bno" resultType="int" order="BEFORE">
-	    	SELECT seq_board.NEXTVAL FROM DUAL
+	    	select seq_board.nextval from dual
 	    </selectKey>
 		insert into tbl_board (bno, title,content,writer)
 		values(#{bno}, #{title},#{content},#{writer})

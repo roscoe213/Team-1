@@ -39,7 +39,8 @@
 							</div>
 							<div class="form-group">									
 									<a  class="image fit" style="margin-bottom: 40px;">
-									<img src="../images/food/휴일로.jpg" style="border-radius: 70%; margin-left:75px; height: 40px; width: 40px; display: inline-block" alt="" />
+									<a href = "/member/imgRegister">
+									<img src="../images/food/휴일로.jpg" style="border-radius: 70%; margin-left:75px; height: 40px; width: 40px; display: inline-block" alt="" /></a>
 									<strong style="display: inline-block">&nbsp;&nbsp;${sessionScope.user_nick}</strong>
 									&nbsp;&nbsp;${sessionScope.user_email}
 									<input type="button" class="btn btn-primary btn-user btn-block" style="margin-left:10px; height: 20px; width: 20px; font-size: 9pt; padding: 2px 52px 7.800px 5px;" value="로그아웃" onclick="location.href='logout'">	

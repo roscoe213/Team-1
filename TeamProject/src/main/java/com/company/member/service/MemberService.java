@@ -1,5 +1,6 @@
 package com.company.member.service;
 
+
 import com.company.member.command.MemberVO;
 
 public interface MemberService {
@@ -13,5 +14,6 @@ public interface MemberService {
 	public int pwUpdate(MemberVO vo);	// 비밀번호 변경
 	public void deleteMembers(MemberVO vo);	// 회원정보 삭제
 	public int findPw(MemberVO vo);//비밀번호 찾기
+
 	
 }

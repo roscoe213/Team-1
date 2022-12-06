@@ -23,7 +23,7 @@
 			<div class="inner">
 				<header>
 					<h1>
-						<a href="/" id="logo">게시물 수정</a>
+						<a href="../food/Food_Map" id="logo">게시물 수정</a>
 					</h1>
 				</header>
 			</div>

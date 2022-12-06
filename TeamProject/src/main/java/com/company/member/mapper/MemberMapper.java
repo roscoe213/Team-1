@@ -1,5 +1,8 @@
 package com.company.member.mapper;
 
+import java.util.List;
+
+import com.company.member.command.MemberImgVO;
 import com.company.member.command.MemberVO;
 
 public interface MemberMapper {
@@ -13,5 +16,8 @@ public interface MemberMapper {
 	public int confirm(MemberVO vo);
 	public	void deleteMembers(MemberVO vo); //회원탈퇴
 	public int findPw(MemberVO vo);//비밀번호 찾기
+	public void insert(MemberImgVO vo);
+	public void delete(String uuid);
+	public List<MemberImgVO> findByemail(String email);
 
 }

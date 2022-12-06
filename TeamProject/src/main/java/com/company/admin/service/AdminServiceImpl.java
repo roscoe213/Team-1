@@ -2,13 +2,13 @@ package com.company.admin.service;
 
 import java.util.ArrayList;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.company.admin.command.AdminCriteria;
 import com.company.admin.command.AdminVO;
 import com.company.admin.mapper.AdminMapper;
-import com.company.board.command.BoardVO;
 
 @Service
 public class AdminServiceImpl implements AdminService {
@@ -17,8 +17,8 @@ public class AdminServiceImpl implements AdminService {
 	private AdminMapper mapper;
 
 	@Override
-	public ArrayList<AdminVO> adGetList(AdminCriteria adcri) {
-		ArrayList<AdminVO> list = mapper.adGetList();
+	public ArrayList<AdminVO> adGetList(int count_oracle,int adpageStart,int num1) {
+		ArrayList<AdminVO> list = mapper.adPageList(count_oracle,adpageStart, num1);
 		return list;
 		
 	}
@@ -45,7 +45,7 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public void adDelete(int nno) {
-		// TODO Auto-generated method stub
+		mapper.adDelete(nno);
 
 	}
 
