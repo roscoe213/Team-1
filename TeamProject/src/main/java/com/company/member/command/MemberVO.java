@@ -19,6 +19,5 @@ public class MemberVO {
 	private Date regDate;
 	private int admin;
 	
-	private List<MemberImgVO> imageList;
 
 }
