@@ -77,7 +77,7 @@
 											<!-- 2. 페이지번호 활성화 여부 -->
 											<c:forEach var="num" begin="${adpageMaker.adStartPage }"
 												end="${adpageMaker.adEndPage}">
-												<a class="${adpageMaker.adcri.pageNum == num ? 'active':'' }" href="Daejung_Attraction?num1=5&count_oracle=${adpageMaker.adcri.count_oracle}&adpageStart=${adpageMaker.adcri.adpageStart}&pageNum=${num }">${num }</a></li>
+												<a class="${adpageMaker.adcri.pageNum == num ? 'active':'' }" href="Daejung_Attraction?num1=5&count_oracle=${adpageMaker.adcri.count_oracle}&adpageStart=${adpageMaker.adcri.adpageStart}&pageNum=${num }">${num }</a>
 											</c:forEach>
 											<!-- 3. 다음 버튼 활성화 여부 -->
 											<c:if test="${adpageMaker.next }">
