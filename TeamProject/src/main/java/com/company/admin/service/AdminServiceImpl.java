@@ -45,7 +45,7 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public void adDelete(int nno) {
-		// TODO Auto-generated method stub
+		mapper.adDelete(nno);
 
 	}
 
