@@ -9,6 +9,9 @@ import java.util.Map;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,9 +19,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.company.board.command.BoardAttachVO;
 import com.company.board.command.BoardVO;
 import com.company.board.command.Criteria;
 import com.company.board.command.PageVO;
@@ -250,7 +255,14 @@ public class BoardController {
 		
 		return "redirect:/board/list";
 	}
-	
+	//첨부파일 가져오기
+		@GetMapping(value="/getAttachList",
+				produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+		@ResponseBody
+		public ResponseEntity<List<BoardAttachVO>> getAttachList(int seq_bno) {
+			System.out.println("getAttachList : "+ seq_bno);
+			return new ResponseEntity<List<BoardAttachVO>>(service.getAttachList(seq_bno), HttpStatus.OK);
+		}
 	
 	
 	

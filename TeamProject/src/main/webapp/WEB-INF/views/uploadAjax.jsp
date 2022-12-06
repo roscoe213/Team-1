@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,57 +12,49 @@
 	<div class="uploadDiv">
 		<input type="file" name="uploadFile" multiple>
 	</div>
-	
-	
-	
+
+
+
 	<div class="uploadResult">
 		<ul>
-		
+
 		</ul>
 	</div>
 
 	<button id="uploadBtn">Upload</button>
-	
+
 	<div class='bigPictureWrapper'>
-		<div class='bigPicture'>
-		
-		</div>
+		<div class='bigPicture'></div>
 	</div>
 
 	<style>
-	.uploadResult {
-	 width:100%
- 	background-color: gray;
+.uploadResult {
+	width: 100% background-color: gray;
+}
 
-	}
+.uploadResult ul {
+	display: flex;
+	flex-flow: row;
+	justify-content: center;
+	align-items: center;
+}
 
-
-	.uploadResult ul {
- 
- 	display:flex;
- 	flex-flow: row;
- 	justify-content: center;
- 	align-items: center;
-	}
-
-	.uploadResult ul li{
- 	list-style: none;
+.uploadResult ul li {
+	list-style: none;
 	padding: 10px;
 	align-content: center;
 	text-align: center;
-	}
-	
-	.uploadResult ul li img{
-	 width 100px;
-	} 
-	 
+}
 
-	.uploadResult ul li span {
+.uploadResult ul li img {width 100px;
+	
+}
+
+.uploadResult ul li span {
 	color: white;
-	}
-	
-	.bigPictureWrapper {
-	
+}
+
+.bigPictureWrapper {
 	position: absolute;
 	display: none;
 	justify-content: center;
@@ -72,27 +63,23 @@
 	height: 100%;
 	background-color: gray;
 	z-index: 100;
-	background:rgba(255,255,255,0.5);
-	}
-	
-	.bigPicture {
-	
+	background: rgba(255, 255, 255, 0.5);
+}
+
+.bigPicture {
 	position: relative;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	}
-	
-	.bigPicture img{
-		width:600px;
-	}
-	
-	</style>
+}
 
-	<script src="https://code.jquery.com/jquery-3.6.1.min.js"
-		integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
-		crossorigin="anonymous"></script>
-	
+.bigPicture img {
+	width: 600px;
+}
+</style>
+
+	<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
 	<script>
 		var regex = new RegExp("(.*?)\.(exe|sh|zip|alz)$");
 		var maxSize = 5242880;
@@ -210,6 +197,6 @@
 		
 		
 	</script>
-	
+
 </body>
 </html>

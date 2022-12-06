@@ -3,7 +3,7 @@ package com.company.board.service;
 import java.util.ArrayList;
 import java.util.List;
 
-
+import com.company.board.command.BoardAttachVO;
 import com.company.board.command.BoardVO;
 import com.company.board.command.Criteria;
 
@@ -23,7 +23,7 @@ public interface BoardService {
 	public List<BoardVO> topList();	//top 리스트 가져오기
 	
 	// 첨부파일 조회
-
+	public List<BoardAttachVO> getAttachList(int seq_bno);
 	
 	// 첨부파일 다운
 	

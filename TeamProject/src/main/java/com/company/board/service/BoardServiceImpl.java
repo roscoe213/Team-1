@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.company.board.command.BoardAttachVO;
 import com.company.board.command.BoardVO;
 import com.company.board.command.Criteria;
 import com.company.board.mapper.BoardAttachMapper;
@@ -25,85 +26,87 @@ import lombok.Setter;
 @Service
 public class BoardServiceImpl implements BoardService {
 
-	//DAO영역은 MyBatis를 사용하여 구현...
+	// DAO영역은 MyBatis를 사용하여 구현...
 	@Setter(onMethod_ = @Autowired)
 	private BoardMapper mapper;
-	
+
 	@Setter(onMethod_ = @Autowired)
-	private BoardAttachMapper attachMapper;	
-	
+	private BoardAttachMapper attachMapper;
+
 	@Inject
 	private SqlSession session;
-	
-	
-	
-	//페이징처리 게시글 목록 가져오기
+
+	// 페이징처리 게시글 목록 가져오기
 	@Override
 	public ArrayList<BoardVO> getList(Criteria cri) {
 		ArrayList<BoardVO> list = mapper.pagingList(cri);
 		return list;
 	}
-	
-	//top조회수 게시글 목록 가져오기
+
+	// top조회수 게시글 목록 가져오기
 	@Override
 	public List<BoardVO> topList() {
 		List<BoardVO> list = mapper.topList();
-	return list;
-}
+		return list;
+	}
 
 	@Override
 	public int getTotal() {
 		int total = mapper.getTotal();
 		return total;
 	}
-	
+
 	@Transactional
 	@Override
 	public void register(BoardVO vo) {
 		System.out.println("register...: " + vo);
-		
-		
+
 		mapper.insertBoard(vo);
-		
-		if(vo.getAttachList() == null || vo.getAttachList().size() <= 0) {
+
+		if (vo.getAttachList() == null || vo.getAttachList().size() <= 0) {
 			return;
 		}
-		
-		vo.getAttachList().forEach(attach ->{
-			
+
+		vo.getAttachList().forEach(attach -> {
+
 			attach.setSeq_bno(vo.getBno());
 			attachMapper.insert(attach);
-			
+
 		});
-		
+
 	}
-	
+
 	@Override
 	public BoardVO getContent(int num) {
 		// 마이바티스의 멤퍼 확인
 		BoardVO vo = mapper.getContent(num);
 		return vo;
 	}
-	
+
 	@Override
 	public void update(BoardVO vo) {
 		boolean bool = mapper.updateBoard(vo);
-		System.out.println("성공(true),실패(false)? : "+ bool);
-		
+		System.out.println("성공(true),실패(false)? : " + bool);
+
 	}
-	
+
 	@Override
 	public void delete(int num) {
 		mapper.deleteBoard(num);
-		
+
 	}
-	
+
 	@Override
 	public void upHit(int num) {
 		BoardMapper mapper = session.getMapper(BoardMapper.class);
 		mapper.upHit(num);
-		
+
 	}
 
-	
+	@Override
+	public List<BoardAttachVO> getAttachList(int seq_bno) {
+		System.out.println("get Attach list by seq_bno : " + seq_bno);
+		return attachMapper.findByBno(seq_bno);
+	}
+
 }

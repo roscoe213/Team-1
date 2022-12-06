@@ -3,7 +3,6 @@ package com.company.member.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.company.member.command.MemberImgVO;
 import com.company.member.command.MemberVO;
 import com.company.member.mapper.MemberMapper;
 

@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.company.admin.command.AdminCriteria;
 import com.company.admin.command.AdminVO;
 import com.company.admin.mapper.AdminMapper;
 
@@ -17,8 +16,15 @@ public class AdminServiceImpl implements AdminService {
 	private AdminMapper mapper;
 
 	@Override
-	public ArrayList<AdminVO> adGetList(int count_oracle,int adpageStart,int num1) {
-		ArrayList<AdminVO> list = mapper.adPageList(count_oracle,adpageStart, num1);
+	public ArrayList<AdminVO> adGetLista(int count_oracle,int adpageStart,int num1) {
+		ArrayList<AdminVO> list = mapper.adPageLista(count_oracle,adpageStart, num1);
+		return list;
+		
+	}
+	
+	@Override
+	public ArrayList<AdminVO> adGetListf(int count_oracle,int adpageStart,int num1) {
+		ArrayList<AdminVO> list = mapper.adPageListf(count_oracle,adpageStart, num1);
 		return list;
 		
 	}
