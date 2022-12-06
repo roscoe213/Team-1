@@ -2,7 +2,6 @@ package com.company.board.mapper;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import com.company.board.command.BoardVO;
 import com.company.board.command.Criteria;
@@ -27,11 +26,8 @@ public interface BoardMapper {
 	public List<BoardVO> topList();
 	
 	//첨부파일 등록
-	public void insertFile(Map<String, Object> map);
 	
 	//첨부파일 상세보기
-	public List<Map<String, Object>> selectFileList(int num) ;
 	
 	//첨부파일 다운로드
-	public Map<String, Object> selectFileInfo(Map<String, Object> map) throws Exception;
 }
