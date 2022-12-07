@@ -45,7 +45,7 @@
 					<div class="p-5">
 						<div class="text-content">
 							<h1 class="h4 text-gray-900 mb-4" align="center">비밀번호 찾기</h1>
-							<p class="mb-4">임시비밀번호를 받으실 이메일을 입력해주세요!</p>
+							<p class="mb-4">인증번호를 받으실 이메일을 입력해주세요!</p>
 						</div>
 						<form action="gofindPwForm" method="post" id = "gofindPwForm">
 							<div class="form-group">
@@ -60,14 +60,13 @@
                                         
                                         <input type="text" placeholder="인증번호 입력" id="authNum" name = "authNum">
                                         
-                                        <input type="button" class="button" value="비밀번호 변경" onclick="passwordCheck()">
+                                      
                                     
-							<div class="form-group">
-								<input type="submit"
-									class="btn btn-primary btn-user btn-block col-4"
-									style="margin: 20px 0 0 60px" value="확인"> <input
+							<div class="form-group">                                        
+							<input type="button" class="button" value="비밀번호 변경" onclick="passwordCheck()">
+								<input
 									type="button" class="btn btn-primary btn-user btn-block col-4"
-									style="margin: 20px 0 0 10px" value="취소"
+									style="margin: -7px 0 0 10px" value="취소"
 									onclick="location.href='join_loginPage'">
 							</div>
 						</form>
