@@ -13,13 +13,13 @@ a{color:inherit;text-decoration:none}
   width:100%;
   margin:50px auto;
   max-width:525px;
-  min-height:850px;
+  min-height:980px;
   position:relative;
   box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
 }
 .login-html{
   width:100%;
-  height:100%;
+  height:980px;
   position:absolute;
   padding: 30px 70px 50px 70px;
   background: rgba(40,57,101,.9);
